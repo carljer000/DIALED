@@ -151,10 +151,32 @@ dialed/
 |   |-- src/routes/             # API route definitions
 |   `-- seed.js                 # Optional sample check-ins
 |-- supabase/migrations/        # Versioned database schema changes
+|-- screenshots/                # README preview images
+|-- REPORT.md                   # Weekly development report
 `-- README.md                   # Project documentation
 ```
 
-## 6. Known issues and next steps
+## 6. Screenshots
+
+### Today - Daily check-in
+
+![DIALED Today mobile check-in screen](screenshots/today-checkin-mobile.png)
+
+The Today screen records weight, calorie and protein targets, steps, Headspace signals, daily challenges, and reflection notes.
+
+### Dashboard - Progress overview
+
+![DIALED Dashboard mobile screen](screenshots/dashboard-mobile.png)
+
+The Dashboard shows the current streak, on-target days, 21-day calorie consistency, and the weight-trend area.
+
+### Headspace and Reflection detail
+
+![DIALED Headspace and Reflection check-in](screenshots/headspace-checkin.png)
+
+The Headspace section keeps the DIALED black, white, and red visual system while allowing optional detail when users need it.
+
+## 7. Known issues and next steps
 
 ### Known issues
 
@@ -170,3 +192,4 @@ dialed/
 - Research Gemini AI-assisted food tracking, including accuracy, privacy, and cost before implementation.
 - Add authentication, user ownership, rate limiting, and stronger API security.
 - Deploy the React frontend and Express API so DIALED works outside local development.
+
