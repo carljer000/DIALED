@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+# Explicit local environment files used by DIALED.
+server/.env
+client/.env.local
+client/.env.*.local
+*.log
+supabase/.temp/
+tmp/
