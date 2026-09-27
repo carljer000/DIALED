@@ -14,9 +14,9 @@ import MetricInput from "../molecules/MetricInput.jsx";
 import WeightInput from "../molecules/WeightInput.jsx";
 
 export default function CheckInForm() {
-  const { checkins, saveCheckin } = useDialed();
-  const [form, setForm] = useState(() => createEmptyCheckin(todayIso()));
-  const [weightUnit, setWeightUnit] = useState("kg");
+  const { checkins, preferences, saveCheckin } = useDialed();
+  const [form, setForm] = useState(() => createEmptyCheckin(todayIso(), preferences));
+  const [weightUnit, setWeightUnit] = useState(preferences.weightUnit);
   const [message, setMessage] = useState("");
   const [messageKind, setMessageKind] = useState("status");
   const [saving, setSaving] = useState(false);
@@ -44,7 +44,11 @@ export default function CheckInForm() {
     const { name, value } = event.target;
     if (name === "date") {
       const existing = checkins.find((checkin) => checkin.date === value);
-      setForm(existing ? toEditableCheckin(existing) : createEmptyCheckin(value));
+      setForm(
+        existing
+          ? toEditableCheckin(existing, weightUnit)
+          : createEmptyCheckin(value, preferences),
+      );
     } else {
       setForm((current) => ({ ...current, [name]: value }));
     }
@@ -100,7 +104,13 @@ export default function CheckInForm() {
           <MetricInput label="Protein target" name="targetProtein" value={form.targetProtein} onChange={change} suffix="g" />
           <MetricInput label="Protein eaten" name="actualProtein" value={form.actualProtein} onChange={change} suffix="g" />
         </div>
-        <MetricInput label="Steps" name="steps" value={form.steps} onChange={change} suffix="steps" />
+        <MetricInput
+          label={preferences.stepGoal ? `Steps · ${Number(preferences.stepGoal).toLocaleString()} goal` : "Steps"}
+          name="steps"
+          value={form.steps}
+          onChange={change}
+          suffix="steps"
+        />
       </section>
 
       <section className="form-card">
@@ -112,7 +122,9 @@ export default function CheckInForm() {
         <HeadspaceDetails form={form} onFieldChange={changeField} />
         <label className="note-label">
           Reflection
-          <span className="reflection-prompt">{form.reflectionPrompt}</span>
+          {preferences.reflectionPrompts && (
+            <span className="reflection-prompt">{form.reflectionPrompt}</span>
+          )}
           <textarea
             name="reflectionNote"
             value={form.reflectionNote}

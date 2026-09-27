@@ -10,10 +10,31 @@ import { checkinsApi } from "../services/checkinsApi.js";
 
 const DialedContext = createContext(null);
 
+const defaultPreferences = {
+  targetCalories: "2250",
+  targetProtein: "180",
+  stepGoal: "10000",
+  weightUnit: "kg",
+  startingWeight: "",
+  goalWeight: "",
+  defaultTrainingStatus: "",
+  reflectionPrompts: true,
+};
+
+function loadPreferences() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("dialed-preferences"));
+    return saved ? { ...defaultPreferences, ...saved } : defaultPreferences;
+  } catch {
+    return defaultPreferences;
+  }
+}
+
 export function DialedProvider({ children }) {
   const [checkins, setCheckins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [preferences, setPreferences] = useState(loadPreferences);
 
   const refresh = useCallback(async () => {
     setLoading(true);
@@ -46,9 +67,33 @@ export function DialedProvider({ children }) {
     setCheckins((current) => current.filter((checkin) => checkin.id !== id));
   }, []);
 
+  const savePreferences = useCallback((nextPreferences) => {
+    const saved = { ...defaultPreferences, ...nextPreferences };
+    localStorage.setItem("dialed-preferences", JSON.stringify(saved));
+    setPreferences(saved);
+  }, []);
+
   const value = useMemo(
-    () => ({ checkins, loading, error, refresh, saveCheckin, deleteCheckin }),
-    [checkins, loading, error, refresh, saveCheckin, deleteCheckin],
+    () => ({
+      checkins,
+      loading,
+      error,
+      preferences,
+      refresh,
+      saveCheckin,
+      deleteCheckin,
+      savePreferences,
+    }),
+    [
+      checkins,
+      loading,
+      error,
+      preferences,
+      refresh,
+      saveCheckin,
+      deleteCheckin,
+      savePreferences,
+    ],
   );
 
   return <DialedContext.Provider value={value}>{children}</DialedContext.Provider>;

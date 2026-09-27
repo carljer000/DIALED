@@ -1,17 +1,17 @@
-export function createEmptyCheckin(date) {
+export function createEmptyCheckin(date, preferences = {}) {
   return {
     date,
     weight: "",
-    targetCalories: "2250",
+    targetCalories: String(preferences.targetCalories || "2250"),
     actualCalories: "",
-    targetProtein: "180",
+    targetProtein: String(preferences.targetProtein || "180"),
     actualProtein: "",
     steps: "",
     motivation: "Dialed",
     energyLevel: "",
     hungerLevel: "",
     sleepQuality: "",
-    trainingStatus: "",
+    trainingStatus: preferences.defaultTrainingStatus || "",
     mainChallenge: "",
     dailyWin: "",
     reflectionPrompt: reflectionPromptForDate(date),
@@ -32,12 +32,18 @@ export function reflectionPromptForDate(date) {
   return reflectionPrompts[Math.abs(dayNumber) % reflectionPrompts.length];
 }
 
-export function toEditableCheckin(checkin) {
-  return Object.fromEntries(
+export function toEditableCheckin(checkin, weightUnit = "kg") {
+  const editable = Object.fromEntries(
     Object.entries(checkin)
       .filter(([key]) => !["id", "createdAt", "updatedAt"].includes(key))
       .map(([key, value]) => [key, value ?? ""]),
   );
+
+  if (editable.weight && weightUnit === "lb") {
+    editable.weight = (Number(editable.weight) * 2.20462).toFixed(1);
+  }
+
+  return editable;
 }
 
 export function serializeCheckin(form, weightUnit) {

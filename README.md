@@ -118,6 +118,10 @@ Choose an overall Headspace status: **Low**, **Neutral**, or **Dialed**. The use
 
 Select **Log check-in** to save the entry. Saving the same date updates the existing check-in instead of creating a duplicate.
 
+### Personal settings
+
+Open the gear icon on the **Today** screen to set default calorie and protein targets, a daily step goal, preferred weight unit, optional starting and goal weights, default training status, and whether guided reflection prompts appear. These preferences are stored in the current browser and automatically apply to new check-ins; they can still be changed for an individual day.
+
 ### Dashboard and history
 
 Use **Dashboard** to see the current streak, on-target days, a 21-day calorie-consistency view, and a weight trend based on the latest 30 days of check-ins.
@@ -142,7 +146,7 @@ dialed/
 |   `-- src/
 |       |-- components/         # Atoms, molecules, and organisms
 |       |-- context/            # Shared check-in state
-|       |-- pages/              # Today, Dashboard, and History screens
+|       |-- pages/              # Today, Dashboard, History, and Settings screens
 |       |-- services/           # API request functions
 |       |-- styles/             # Global styling and responsive rules
 |       `-- utils/              # Date and check-in helpers
