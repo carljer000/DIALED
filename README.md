@@ -124,7 +124,7 @@ Open the gear icon on the **Today** screen to set default calorie and protein ta
 
 ### Dashboard and history
 
-Use **Dashboard** to see the current streak, on-target days, a 21-day calorie-consistency view, and a weight trend based on the latest 30 days of check-ins.
+Use **Dashboard** to see the current streak, on-target days, a 21-day calorie-consistency view, and a weight trend based on the latest 30 days of check-ins. Its Recent Patterns card also summarizes calorie and protein consistency, average energy, hunger and sleep, the most common challenge, and a cautious comparison between on-target and over-target days once enough data exists.
 
 Use **History** to review past check-ins, including the saved Headspace details and reflections, or delete an entry when needed.
 

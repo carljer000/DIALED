@@ -4,12 +4,17 @@ import StateMessage from "../components/atoms/StateMessage.jsx";
 import ConsistencyHeatmap from "../components/organisms/ConsistencyHeatmap.jsx";
 import DashboardSummary from "../components/organisms/DashboardSummary.jsx";
 import WeightTrendChart from "../components/organisms/WeightTrendChart.jsx";
+import ProgressInsights from "../components/organisms/ProgressInsights.jsx";
 import { useDialed } from "../context/DialedContext.jsx";
-import { calculateDashboardStats } from "../utils/checkins.js";
+import {
+  calculateDashboardInsights,
+  calculateDashboardStats,
+} from "../utils/checkins.js";
 
 export default function DashboardPage() {
   const { checkins, loading, error } = useDialed();
   const stats = useMemo(() => calculateDashboardStats(checkins), [checkins]);
+  const insights = useMemo(() => calculateDashboardInsights(checkins), [checkins]);
 
   if (loading) {
     return <section className="page"><StateMessage kind="loading">Loading your momentum…</StateMessage></section>;
@@ -27,6 +32,7 @@ export default function DashboardPage() {
       <DashboardSummary streak={stats.streak} onTarget={stats.onTarget} />
       <ConsistencyHeatmap checkins={checkins} />
       <WeightTrendChart checkins={stats.ascending} />
+      <ProgressInsights insights={insights} />
     </section>
   );
 }
