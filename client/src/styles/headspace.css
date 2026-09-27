@@ -50,8 +50,8 @@
 }
 
 .rating-options button {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   background: transparent;
   border: 1px solid #34363b;
   border-radius: 50%;
@@ -119,4 +119,9 @@
   .rating-row > span { grid-row: 3; }
   .rating-row > span:last-child { grid-column: 1; }
   .challenge-options { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 380px) {
+  .rating-options { gap: 4px; }
+  .rating-options button { height: 38px; width: 38px; }
 }

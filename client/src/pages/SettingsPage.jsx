@@ -91,6 +91,7 @@ export default function SettingsPage() {
                   key={unit}
                   type="button"
                   className={form.weightUnit === unit ? "selected" : ""}
+                  aria-pressed={form.weightUnit === unit}
                   onClick={() => switchWeightUnit(unit)}
                 >
                   {unit}

@@ -69,12 +69,13 @@
   border-top: 1px solid #2a2d33;
   bottom: 0;
   display: flex;
-  height: 72px;
+  height: calc(72px + env(safe-area-inset-bottom));
   justify-content: center;
   left: 0;
   position: fixed;
   right: 0;
   z-index: 4;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .nav-item {
@@ -90,6 +91,7 @@
   justify-content: center;
   letter-spacing: 1.5px;
   max-width: 170px;
+  min-height: 44px;
   text-decoration: none;
   text-transform: none;
 }
@@ -114,4 +116,9 @@
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+@media (max-width: 380px) {
+  .form-card, .dashboard-card { padding: 16px; }
+  .page-header h1 { font-size: 2.25rem; }
 }

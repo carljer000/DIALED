@@ -19,6 +19,7 @@ const defaultPreferences = {
   goalWeight: "",
   defaultTrainingStatus: "",
   reflectionPrompts: true,
+  theme: "dark",
 };
 
 function loadPreferences() {
@@ -51,6 +52,11 @@ export function DialedProvider({ children }) {
   useEffect(() => {
     refresh();
   }, [refresh]);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = preferences.theme;
+    document.documentElement.style.colorScheme = preferences.theme;
+  }, [preferences.theme]);
 
   const saveCheckin = useCallback(async (values) => {
     const saved = await checkinsApi.upsert(values);

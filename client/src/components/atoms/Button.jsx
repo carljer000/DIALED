@@ -11,6 +11,7 @@ export default function Button({
       type={type}
       className={className}
       disabled={disabled || loading}
+      aria-busy={loading || undefined}
       {...props}
     >
       {children}

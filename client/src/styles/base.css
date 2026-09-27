@@ -1,4 +1,9 @@
 :root {
+  --accent: #ff3b45;
+  --line-color: #2c2f34;
+  --text-muted: #8fa0b5;
+  --text-strong: #d5dbe3;
+  --track-bg: #252930;
   color: #f7f7f7;
   background: #000;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -20,6 +25,33 @@ body {
 
 button, input, textarea { font: inherit; }
 button { cursor: pointer; }
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  left: 12px;
+  padding: 10px 14px;
+  position: fixed;
+  top: 12px;
+  transform: translateY(-160%);
+  transition: transform 150ms ease;
+  z-index: 20;
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 .eyebrow {
   color: #ff3b45;

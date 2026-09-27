@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
 import BottomNav from "../components/organisms/BottomNav.jsx";
+import ThemeToggle from "../components/molecules/ThemeToggle.jsx";
 
 export default function AppLayout() {
   return (
     <div className="app-shell">
-      <main>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
+      <ThemeToggle />
+      <main id="main-content" tabIndex="-1">
         <Outlet />
       </main>
       <BottomNav />

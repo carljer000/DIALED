@@ -3,7 +3,7 @@ export default function StateMessage({ children, kind = "status" }) {
   const role = kind === "error" ? "alert" : "status";
 
   return (
-    <p className={className} role={role}>
+    <p className={className} role={role} aria-live={kind === "error" ? "assertive" : "polite"}>
       {children}
     </p>
   );

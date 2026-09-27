@@ -6,7 +6,7 @@
 }
 
 .stat-grid article {
-  background: #ff3b45;
+  background: #202124;
   border-radius: 18px;
   color: white;
   padding: 17px;
@@ -89,8 +89,8 @@
 .result-badge.missed { background: #3c2923; color: #ffad7d; }
 
 .delete-button {
-  min-width: 40px;
-  min-height: 40px;
+  min-width: 44px;
+  min-height: 44px;
   background: transparent;
   border: 0;
   color: #777f89;
