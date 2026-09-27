@@ -67,6 +67,12 @@ export function serializeCheckin(form, weightUnit) {
   };
 }
 
+export function weightFromKg(weight, unit = "kg") {
+  if (weight === null || weight === undefined || weight === "") return null;
+  const value = Number(weight);
+  return unit === "lb" ? value * 2.20462 : value;
+}
+
 export function calculateDashboardStats(checkins) {
   const ascending = [...checkins]
     .sort((a, b) => a.date.localeCompare(b.date))
@@ -145,7 +151,7 @@ function buildPatternMessage(onTarget, overTarget) {
     : `Your ${strongest.label} has not been higher on on-target days so far.`;
 }
 
-export function calculateDashboardInsights(checkins) {
+export function calculateDashboardInsights(checkins, stepGoal = 0) {
   const recent = [...checkins]
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 7);
@@ -165,6 +171,11 @@ export function calculateDashboardInsights(checkins) {
   const proteinHits = proteinLogs.filter(
     (checkin) => Number(checkin.actualProtein) >= Number(checkin.targetProtein),
   ).length;
+  const numericStepGoal = Number(stepGoal);
+  const stepLogs = recent.filter((checkin) => Number(checkin.steps) > 0);
+  const stepHits = stepLogs.filter(
+    (checkin) => Number(checkin.steps) >= numericStepGoal,
+  ).length;
   const calorieWindow = window.filter(
     (checkin) => Number(checkin.actualCalories) > 0 && Number(checkin.targetCalories) > 0,
   );
@@ -179,6 +190,8 @@ export function calculateDashboardInsights(checkins) {
     loggedDays: recent.length,
     calorieConsistency: percentage(calorieHits, calorieLogs.length),
     proteinConsistency: percentage(proteinHits, proteinLogs.length),
+    hasStepGoal: numericStepGoal > 0,
+    stepConsistency: numericStepGoal > 0 ? percentage(stepHits, stepLogs.length) : null,
     averages: {
       energy: average(window, "energyLevel"),
       hunger: average(window, "hungerLevel"),
@@ -187,4 +200,106 @@ export function calculateDashboardInsights(checkins) {
     commonChallenge: mostCommonChallenge(window),
     message: buildPatternMessage(onTarget, overTarget),
   };
+}
+
+export function calculateGoalProgress(checkins, preferences) {
+  const unit = preferences.weightUnit || "kg";
+  const startingWeight = Number(preferences.startingWeight);
+  const goalWeight = Number(preferences.goalWeight);
+  const latest = [...checkins]
+    .filter((checkin) => Number(checkin.weight) > 0)
+    .sort((a, b) => b.date.localeCompare(a.date))[0];
+  const currentWeight = latest ? weightFromKg(latest.weight, unit) : null;
+
+  if (!startingWeight || !goalWeight || currentWeight === null || startingWeight === goalWeight) {
+    return { available: false, unit };
+  }
+
+  const direction = goalWeight < startingWeight ? -1 : 1;
+  const totalDistance = Math.abs(goalWeight - startingWeight);
+  const progressDistance = (currentWeight - startingWeight) * direction;
+  const progress = Math.max(0, Math.min(100, Math.round((progressDistance / totalDistance) * 100)));
+  const reached = direction === -1 ? currentWeight <= goalWeight : currentWeight >= goalWeight;
+
+  return {
+    available: true,
+    unit,
+    startingWeight,
+    goalWeight,
+    currentWeight,
+    remaining: reached ? 0 : Math.abs(goalWeight - currentWeight),
+    progress: reached ? 100 : progress,
+    reached,
+  };
+}
+
+function mostCommonValue(checkins, field) {
+  const counts = checkins.reduce((result, checkin) => {
+    const value = checkin[field];
+    if (value) result[value] = (result[value] || 0) + 1;
+    return result;
+  }, {});
+  return Object.entries(counts).sort((a, b) => b[1] - a[1])[0]?.[0] || null;
+}
+
+function weeklyFocus(summary) {
+  if (summary.calorieConsistency < 60) {
+    return "Plan tomorrow’s calories before the day gets busy.";
+  }
+  if (summary.proteinConsistency < 60) {
+    return "Anchor each meal around a reliable protein source.";
+  }
+  if (summary.stepConsistency !== null && summary.stepConsistency < 60) {
+    return "Build one repeatable walk into the part of your day you control.";
+  }
+  if (summary.averageSleep !== null && summary.averageSleep < 3) {
+    return "Protect your sleep window; it is the clearest recovery gap this week.";
+  }
+
+  const challengeFocus = {
+    Hunger: "Prepare a higher-volume meal for the time hunger usually hits.",
+    "Low energy": "Reduce friction: prepare tomorrow’s food and training plan tonight.",
+    "Social event": "Decide your flexible meal and calorie buffer before the event.",
+    Stress: "Choose one simple fallback meal for stressful days.",
+    Time: "Pre-log one fast meal you can repeat when time is tight.",
+    Injury: "Keep nutrition consistent while adapting training around recovery.",
+    Other: "Name the obstacle more specifically in tomorrow’s reflection.",
+  };
+
+  return challengeFocus[summary.commonChallenge] || "Repeat the routine that made your strongest day easier.";
+}
+
+export function calculateWeeklyReflection(checkins, stepGoal = 0) {
+  const recent = [...checkins]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 7);
+  const percentage = (hits, total) => (total ? Math.round((hits / total) * 100) : 0);
+  const calorieLogs = recent.filter(
+    (checkin) => Number(checkin.actualCalories) > 0 && Number(checkin.targetCalories) > 0,
+  );
+  const proteinLogs = recent.filter(
+    (checkin) => Number(checkin.actualProtein) > 0 && Number(checkin.targetProtein) > 0,
+  );
+  const stepLogs = recent.filter((checkin) => Number(checkin.steps) > 0);
+  const numericStepGoal = Number(stepGoal);
+  const summary = {
+    loggedDays: recent.length,
+    calorieConsistency: percentage(
+      calorieLogs.filter((item) => Number(item.actualCalories) <= Number(item.targetCalories)).length,
+      calorieLogs.length,
+    ),
+    proteinConsistency: percentage(
+      proteinLogs.filter((item) => Number(item.actualProtein) >= Number(item.targetProtein)).length,
+      proteinLogs.length,
+    ),
+    stepConsistency: numericStepGoal > 0
+      ? percentage(stepLogs.filter((item) => Number(item.steps) >= numericStepGoal).length, stepLogs.length)
+      : null,
+    commonChallenge: mostCommonChallenge(recent),
+    commonHeadspace: mostCommonValue(recent, "motivation"),
+    bestWin: recent.find((item) => item.dailyWin?.trim())?.dailyWin?.trim() || null,
+    averageSleep: average(recent, "sleepQuality"),
+  };
+
+  return { ...summary, focus: weeklyFocus(summary) };
 }

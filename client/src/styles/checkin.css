@@ -47,17 +47,21 @@
   padding: 7px 9px;
 }
 
-.status-chip.saved { border-color: #a62b35; color: #ff5a63; }
+.status-chip.saved { border-color: #a62b35; color: #ff3b45; }
 
 .weight-heading {
   align-items: center;
   color: #a8afb9;
   display: flex;
-  font-size: 0.84rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   justify-content: space-between;
 }
 
-.weight-heading > span, .metric-input > span { letter-spacing: -0.02em; }
+.weight-heading > span, .metric-input > span {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
 
 .unit-toggle {
   background: #0c0c0d;
@@ -83,7 +87,7 @@
 .unit-toggle button.selected {
   background: transparent;
   border-color: #a62b35;
-  color: #ff5a63;
+  color: #ff3b45;
 }
 
 .metric-grid {
@@ -97,7 +101,7 @@
   border-top: 1px solid #2c2f34;
   color: #a8afb9;
   display: flex;
-  font-size: 0.96rem;
+  font-size: 1.1rem;
   justify-content: space-between;
   min-height: 58px;
   min-width: 0;
@@ -119,12 +123,13 @@
   justify-content: stretch;
 }
 
-.metric-input input {
+.metric-input input,
+.metric-input output {
   width: 100%;
   min-width: 0;
   background: transparent;
   border: 0;
-  color: #ff5a63;
+  color: #ff3b45;
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.7rem;
   font-variation-settings: normal;
@@ -134,6 +139,10 @@
   outline: none;
   padding: 0;
   text-align: right;
+}
+
+.metric-input output {
+  display: block;
 }
 
 .metric-input small {
@@ -168,7 +177,7 @@
   min-width: 0;
   background: transparent;
   border: 0;
-  color: #ff5a63;
+  color: #ff3b45;
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.7rem;
   font-weight: 500;
@@ -202,7 +211,7 @@
 .motivation button.selected {
   background: transparent;
   border-color: #a62b35;
-  color: #ff5a63;
+  color: #ff3b45;
   font-weight: 800;
 }
 
@@ -228,7 +237,7 @@
 }
 
 .on-target, .over-target { font-size: 0.76rem; font-weight: 700; }
-.on-target { color: #ff5a63; }
+.on-target { color: #ff3b45; }
 .over-target { color: #ff9b61; }
 
 .primary-button {
@@ -236,7 +245,7 @@
   background: transparent;
   border: 1px solid #a62b35;
   border-radius: 999px;
-  color: #ff5a63;
+  color: #ff3b45;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 1.5px;

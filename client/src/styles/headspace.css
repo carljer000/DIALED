@@ -61,7 +61,7 @@
 
 .rating-options button.selected, .detail-options button.selected {
   border-color: #a62b35;
-  color: #ff5a63;
+  color: #ff3b45;
   font-weight: 800;
 }
 
@@ -109,9 +109,9 @@
   padding: 5px 8px;
 }
 
-.history-headspace strong { border-color: #a62b35; color: #ff5a63; }
+.history-headspace strong { border-color: #a62b35; color: #ff3b45; }
 .history-item .daily-win { color: #f2f2f2; }
-.daily-win strong { color: #ff5a63; }
+.daily-win strong { color: #ff3b45; }
 
 @media (max-width: 520px) {
   .rating-row { align-items: start; grid-template-columns: 1fr; }

@@ -36,6 +36,15 @@ export default function ProgressInsights({ insights }) {
               </div>
               <div className="progress-track"><i style={{ width: `${insights.proteinConsistency}%` }} /></div>
             </div>
+            {insights.hasStepGoal && (
+              <div>
+                <div className="insight-label">
+                  <span>Step goal reached</span>
+                  <strong>{insights.stepConsistency}%</strong>
+                </div>
+                <div className="progress-track"><i style={{ width: `${insights.stepConsistency}%` }} /></div>
+              </div>
+            )}
           </div>
 
           <div className="signal-grid">

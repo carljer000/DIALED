@@ -22,7 +22,7 @@
 }
 
 .stat-grid strong {
-  color: #ff5a63;
+  color: #ff3b45;
   display: block;
   font-size: 2rem;
   letter-spacing: -0.07em;
@@ -85,7 +85,7 @@
   padding: 5px 8px;
 }
 
-.result-badge.hit { background: #3c191d; color: #ff5a63; }
+.result-badge.hit { background: #3c191d; color: #ff3b45; }
 .result-badge.missed { background: #3c2923; color: #ffad7d; }
 
 .delete-button {
@@ -106,7 +106,7 @@
 }
 
 .history-metrics span {
-  color: #ff5a63;
+  color: #ff3b45;
   font-size: 0.92rem;
   font-variant-numeric: tabular-nums;
 }
@@ -139,7 +139,7 @@
 }
 
 .insight-label strong {
-  color: #ff5a63;
+  color: #ff3b45;
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.2rem;
   font-weight: 500;
@@ -195,7 +195,7 @@
 .pattern-summary strong {
   border: 1px solid #a62b35;
   border-radius: 999px;
-  color: #ff5a63;
+  color: #ff3b45;
   font-size: 0.72rem;
   padding: 6px 9px;
 }
@@ -210,8 +210,153 @@
   padding: 13px 14px;
 }
 
-@media (max-width: 380px) {
+.goal-card .empty-state a {
+  color: #ff3b45;
+}
+
+.goal-metrics {
+  margin-top: 18px;
+}
+
+.goal-metric {
+  min-height: 48px;
+}
+
+.goal-metric > div {
+  flex-basis: 155px;
+}
+
+.goal-metric output {
+  color: #ff3b45;
+  font-family: "Bitcount Single", "DotGothic16", monospace;
+  font-size: 1.55rem;
+  font-variation-settings: normal;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.goal-track {
+  background: #252930;
+  height: 9px;
+  margin-top: 26px;
+  overflow: hidden;
+}
+
+.goal-track i {
+  background: #ff3b45;
+  display: block;
+  height: 100%;
+  min-width: 2px;
+}
+
+.goal-caption {
+  align-items: center;
+  color: #8e949e;
+  display: flex;
+  font-size: 0.72rem;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.goal-percentage {
+  color: #ff3b45;
+  font-family: "Bitcount Single", "DotGothic16", monospace;
+  font-size: 1rem;
+  font-variation-settings: "wght" 500;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.goal-remaining {
+  text-align: right;
+}
+
+.weekly-snapshot {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 24px;
+}
+
+.weekly-snapshot div {
+  border: 1px solid #2c2f34;
+  padding: 13px 10px;
+}
+
+.weekly-snapshot span {
+  color: #777f89;
+  display: block;
+  font-size: 0.65rem;
+}
+
+.weekly-snapshot strong {
+  color: #ff3b45;
+  display: block;
+  font-family: "Bitcount Single", "DotGothic16", monospace;
+  font-size: 1.45rem;
+  font-weight: 500;
+  margin-top: 7px;
+}
+
+.weekly-details {
+  margin: 22px 0 0;
+}
+
+.weekly-details div {
+  border-top: 1px solid #2c2f34;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 120px 1fr;
+  padding: 13px 0;
+}
+
+.weekly-details dt {
+  color: #777f89;
+  font-size: 0.7rem;
+}
+
+.weekly-details dd {
+  color: #e5e7ea;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  margin: 0;
+  text-align: right;
+}
+
+.weekly-focus {
+  background: #121214;
+  border-left: 3px solid #ff3b45;
+  margin-top: 8px;
+  padding: 14px;
+}
+
+.weekly-focus span {
+  color: #ff3b45;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.weekly-focus p {
+  color: #d3d5d9;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin: 7px 0 0;
+}
+
+@media (max-width: 520px) {
+  .goal-metric > div { flex-basis: 138px; }
+
+  .goal-caption { align-items: flex-start; }
+
   .signal-grid { grid-template-columns: 1fr; }
   .signal-grid article { align-items: baseline; display: flex; gap: 6px; }
   .signal-grid strong { margin-left: auto; }
+  .weekly-snapshot { grid-template-columns: 1fr; }
+  .weekly-snapshot div { align-items: baseline; display: flex; justify-content: space-between; }
+  .weekly-snapshot strong { margin-top: 0; }
+  .weekly-details div { grid-template-columns: 1fr; gap: 5px; }
+  .weekly-details dd { text-align: left; }
 }

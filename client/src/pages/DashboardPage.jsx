@@ -5,16 +5,31 @@ import ConsistencyHeatmap from "../components/organisms/ConsistencyHeatmap.jsx";
 import DashboardSummary from "../components/organisms/DashboardSummary.jsx";
 import WeightTrendChart from "../components/organisms/WeightTrendChart.jsx";
 import ProgressInsights from "../components/organisms/ProgressInsights.jsx";
+import GoalProgress from "../components/organisms/GoalProgress.jsx";
+import WeeklyReflection from "../components/organisms/WeeklyReflection.jsx";
 import { useDialed } from "../context/DialedContext.jsx";
 import {
   calculateDashboardInsights,
   calculateDashboardStats,
+  calculateGoalProgress,
+  calculateWeeklyReflection,
 } from "../utils/checkins.js";
 
 export default function DashboardPage() {
-  const { checkins, loading, error } = useDialed();
+  const { checkins, loading, error, preferences } = useDialed();
   const stats = useMemo(() => calculateDashboardStats(checkins), [checkins]);
-  const insights = useMemo(() => calculateDashboardInsights(checkins), [checkins]);
+  const insights = useMemo(
+    () => calculateDashboardInsights(checkins, preferences.stepGoal),
+    [checkins, preferences.stepGoal],
+  );
+  const goalProgress = useMemo(
+    () => calculateGoalProgress(checkins, preferences),
+    [checkins, preferences],
+  );
+  const weeklyReflection = useMemo(
+    () => calculateWeeklyReflection(checkins, preferences.stepGoal),
+    [checkins, preferences.stepGoal],
+  );
 
   if (loading) {
     return <section className="page"><StateMessage kind="loading">Loading your momentum…</StateMessage></section>;
@@ -31,8 +46,10 @@ export default function DashboardPage() {
       {error && <StateMessage kind="error">{error}</StateMessage>}
       <DashboardSummary streak={stats.streak} onTarget={stats.onTarget} />
       <ConsistencyHeatmap checkins={checkins} />
-      <WeightTrendChart checkins={stats.ascending} />
+      <GoalProgress progress={goalProgress} />
+      <WeightTrendChart checkins={stats.ascending} unit={preferences.weightUnit} />
       <ProgressInsights insights={insights} />
+      <WeeklyReflection summary={weeklyReflection} />
     </section>
   );
 }

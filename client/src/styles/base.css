@@ -22,7 +22,7 @@ button, input, textarea { font: inherit; }
 button { cursor: pointer; }
 
 .eyebrow {
-  color: #e33a45;
+  color: #ff3b45;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
@@ -38,7 +38,7 @@ button { cursor: pointer; }
 }
 
 .form-message {
-  color: #ff5a63;
+  color: #ff3b45;
   font-size: 0.85rem;
   margin: 0;
 }

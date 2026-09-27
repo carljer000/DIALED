@@ -25,6 +25,19 @@ export default function SettingsPage() {
     setMessage("Settings saved. Your next new check-in will use these defaults.");
   }
 
+  function switchWeightUnit(nextUnit) {
+    if (nextUnit === form.weightUnit) return;
+    const factor = nextUnit === "lb" ? 2.20462 : 1 / 2.20462;
+    const convert = (value) => value ? (Number(value) * factor).toFixed(1) : "";
+    setForm((current) => ({
+      ...current,
+      weightUnit: nextUnit,
+      startingWeight: convert(current.startingWeight),
+      goalWeight: convert(current.goalWeight),
+    }));
+    setMessage("");
+  }
+
   return (
     <section className="page settings-page">
       <PageHeader
@@ -78,7 +91,7 @@ export default function SettingsPage() {
                   key={unit}
                   type="button"
                   className={form.weightUnit === unit ? "selected" : ""}
-                  onClick={() => setForm((current) => ({ ...current, weightUnit: unit }))}
+                  onClick={() => switchWeightUnit(unit)}
                 >
                   {unit}
                 </button>

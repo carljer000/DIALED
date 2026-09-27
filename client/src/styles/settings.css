@@ -20,7 +20,7 @@
 
 .settings-link:hover, .back-link:hover {
   border-color: #a62b35;
-  color: #ff5a63;
+  color: #ff3b45;
 }
 
 .settings-form { display: grid; gap: 16px; }
@@ -59,7 +59,7 @@
   width: 132px;
   background: transparent;
   border: 0;
-  color: #ff5a63;
+  color: #ff3b45;
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.45rem;
   outline: none;
