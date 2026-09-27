@@ -1,0 +1,110 @@
+.settings-link, .back-link {
+  align-items: center;
+  border: 1px solid #34363b;
+  border-radius: 999px;
+  color: #9ea5af;
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 13px;
+  text-decoration: none;
+}
+
+.settings-link {
+  font-size: 1.05rem;
+  min-width: 38px;
+  padding: 0;
+}
+
+.settings-link:hover, .back-link:hover {
+  border-color: #a62b35;
+  color: #ff5a63;
+}
+
+.settings-form { display: grid; gap: 16px; }
+
+.settings-card-heading {
+  align-items: start;
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings-card-heading span {
+  color: #777f89;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.settings-row {
+  align-items: center;
+  border-top: 1px solid #2c2f34;
+  color: #a8afb9;
+  display: flex;
+  font-size: 0.92rem;
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.settings-value {
+  align-items: baseline;
+  display: flex;
+  gap: 7px;
+}
+
+.settings-value input {
+  width: 132px;
+  background: transparent;
+  border: 0;
+  color: #ff5a63;
+  font-family: "Bitcount Single", "DotGothic16", monospace;
+  font-size: 1.45rem;
+  outline: none;
+  text-align: right;
+}
+
+.settings-value input::placeholder {
+  color: #555b64;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+}
+
+.settings-value small {
+  color: #777f89;
+  font-size: 0.66rem;
+  min-width: 30px;
+}
+
+.settings-row select {
+  max-width: 165px;
+  background: #0c0c0d;
+  border: 1px solid #30333a;
+  border-radius: 8px;
+  color: #d5d8dd;
+  padding: 9px 10px;
+}
+
+.settings-switch-row > span { display: grid; gap: 4px; }
+
+.settings-switch-row > span small {
+  color: #777f89;
+  font-size: 0.66rem;
+  font-weight: 400;
+}
+
+.settings-switch-row input[type="checkbox"] {
+  accent-color: #ff3b45;
+  height: 20px;
+  width: 20px;
+}
+
+.settings-save { justify-self: end; }
+
+@media (max-width: 520px) {
+  .settings-row { gap: 14px; }
+  .settings-value input { width: 112px; }
+  .settings-save { justify-self: stretch; width: 100%; }
+}
