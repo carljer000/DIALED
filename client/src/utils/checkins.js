@@ -303,3 +303,45 @@ export function calculateWeeklyReflection(checkins, stepGoal = 0) {
 
   return { ...summary, focus: weeklyFocus(summary) };
 }
+
+export function calculateMonthlySummary(checkins = [], targetMonth, stepGoal = 0) {
+  const monthlyCheckins = targetMonth
+    ? checkins.filter((checkin) => checkin.date?.startsWith(targetMonth))
+    : [];
+  const calorieLogs = monthlyCheckins.filter(
+    (checkin) => Number(checkin.actualCalories) > 0 && Number(checkin.targetCalories) > 0,
+  );
+  const proteinLogs = monthlyCheckins.filter(
+    (checkin) => Number(checkin.actualProtein) > 0 && Number(checkin.targetProtein) > 0,
+  );
+  const stepLogs = monthlyCheckins.filter((checkin) => Number(checkin.steps) > 0);
+  const numericStepGoal = Number(stepGoal);
+  const percentage = (hits, total) => (total ? Math.round((hits / total) * 100) : null);
+
+  return {
+    month: targetMonth || null,
+    loggedDays: monthlyCheckins.length,
+    calorieLoggedDays: calorieLogs.length,
+    calorieConsistency: percentage(
+      calorieLogs.filter(
+        (checkin) => Number(checkin.actualCalories) <= Number(checkin.targetCalories),
+      ).length,
+      calorieLogs.length,
+    ),
+    proteinLoggedDays: proteinLogs.length,
+    proteinConsistency: percentage(
+      proteinLogs.filter(
+        (checkin) => Number(checkin.actualProtein) >= Number(checkin.targetProtein),
+      ).length,
+      proteinLogs.length,
+    ),
+    stepGoal: numericStepGoal > 0 ? numericStepGoal : null,
+    stepLoggedDays: stepLogs.length,
+    stepConsistency: numericStepGoal > 0
+      ? percentage(
+          stepLogs.filter((checkin) => Number(checkin.steps) >= numericStepGoal).length,
+          stepLogs.length,
+        )
+      : null,
+  };
+}

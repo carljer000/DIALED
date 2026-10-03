@@ -7,16 +7,20 @@ import WeightTrendChart from "../components/organisms/WeightTrendChart.jsx";
 import ProgressInsights from "../components/organisms/ProgressInsights.jsx";
 import GoalProgress from "../components/organisms/GoalProgress.jsx";
 import WeeklyReflection from "../components/organisms/WeeklyReflection.jsx";
+import MonthlySummary from "../components/organisms/MonthlySummary.jsx";
 import { useDialed } from "../context/DialedContext.jsx";
 import {
   calculateDashboardInsights,
   calculateDashboardStats,
   calculateGoalProgress,
+  calculateMonthlySummary,
   calculateWeeklyReflection,
 } from "../utils/checkins.js";
 
 export default function DashboardPage() {
   const { checkins, loading, error, preferences } = useDialed();
+  const now = new Date();
+  const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
   const stats = useMemo(() => calculateDashboardStats(checkins), [checkins]);
   const insights = useMemo(
     () => calculateDashboardInsights(checkins, preferences.stepGoal),
@@ -29,6 +33,10 @@ export default function DashboardPage() {
   const weeklyReflection = useMemo(
     () => calculateWeeklyReflection(checkins, preferences.stepGoal),
     [checkins, preferences.stepGoal],
+  );
+  const monthlySummary = useMemo(
+    () => calculateMonthlySummary(checkins, currentMonth, preferences.stepGoal),
+    [checkins, currentMonth, preferences.stepGoal],
   );
 
   if (loading) {
@@ -45,6 +53,7 @@ export default function DashboardPage() {
       />
       {error && <StateMessage kind="error">{error}</StateMessage>}
       <DashboardSummary streak={stats.streak} onTarget={stats.onTarget} />
+      <MonthlySummary summary={monthlySummary} />
       <ConsistencyHeatmap checkins={checkins} />
       <GoalProgress progress={goalProgress} />
       <WeightTrendChart checkins={stats.ascending} unit={preferences.weightUnit} />

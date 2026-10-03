@@ -174,8 +174,11 @@
 [data-theme="light"] .progress-track,
 [data-theme="light"] .goal-track { background: var(--track-bg); }
 [data-theme="light"] .signal-grid article,
-[data-theme="light"] .weekly-snapshot div { border-color: #d7dbe0; }
+[data-theme="light"] .weekly-snapshot div,
+[data-theme="light"] .monthly-summary-metric { border-color: #d7dbe0; }
 [data-theme="light"] .signal-grid strong,
+[data-theme="light"] .monthly-summary-metric > small,
+[data-theme="light"] .monthly-summary-metric > span,
 [data-theme="light"] .weekly-details dd { color: #24282f; }
 
 [data-theme="light"] .pattern-message,

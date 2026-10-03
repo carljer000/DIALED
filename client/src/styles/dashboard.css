@@ -75,6 +75,38 @@
 .history-list { display: grid; gap: 12px; }
 .history-item { padding: 17px; }
 
+.monthly-summary-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.monthly-summary-metric {
+  border: 1px solid #2c2f34;
+  min-width: 0;
+  padding: 13px 11px;
+}
+
+.monthly-summary-metric > span,
+.monthly-summary-metric > small {
+  color: #8e949e;
+  display: block;
+  font-size: 0.66rem;
+  line-height: 1.4;
+}
+
+.monthly-summary-metric > strong {
+  color: #ff3b45;
+  display: block;
+  font-family: "Bitcount Single", "DotGothic16", monospace;
+  font-size: clamp(1.15rem, 4vw, 1.55rem);
+  font-variation-settings: normal;
+  font-weight: 500;
+  margin: 9px 0 6px;
+  overflow-wrap: anywhere;
+}
+
 .history-filters {
   background: #050505;
   border: 1px solid #3c3c3c;
@@ -428,6 +460,8 @@
 }
 
 @media (max-width: 520px) {
+  .monthly-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
   .history-filters { padding: 15px; }
   .history-filter-grid { gap: 12px 10px; }
   .history-filter-field { font-size: 0.68rem; }
@@ -450,4 +484,5 @@
 
 @media (max-width: 360px) {
   .history-filter-grid { grid-template-columns: minmax(0, 1fr); }
+  .monthly-summary-metric { padding: 11px 9px; }
 }
