@@ -5,10 +5,10 @@ export default function CheckInCard({ checkin, deleting, onDelete }) {
   const hitCalories = checkin.actualCalories <= checkin.targetCalories;
   const hitProtein = checkin.actualProtein >= checkin.targetProtein;
   const result = hitCalories && hitProtein
-    ? "Macros hit"
+    ? "Macros Hit"
     : hitCalories
-      ? "Calories hit"
-      : "Reset tomorrow";
+      ? "Calories Hit"
+      : "Reset Tomorrow";
 
   return (
     <article className="history-item">

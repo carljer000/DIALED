@@ -6,7 +6,7 @@ export default function WeeklyReflection({ summary }) {
       <div className="card-heading">
         <div>
           <p className="eyebrow">LATEST SEVEN LOGS</p>
-          <h2>Weekly reflection</h2>
+          <h2>Weekly Reflection</h2>
         </div>
         <span className="chart-unit">{summary.loggedDays}/7 logged</span>
       </div>
@@ -27,12 +27,12 @@ export default function WeeklyReflection({ summary }) {
 
           <dl className="weekly-details">
             <div><dt>Headspace</dt><dd>{summary.commonHeadspace || "Not enough data"}</dd></div>
-            <div><dt>Main challenge</dt><dd>{summary.commonChallenge || "Not enough data"}</dd></div>
-            <div><dt>Win to remember</dt><dd>{summary.bestWin || "Add a daily win to capture it here."}</dd></div>
+            <div><dt>Main Challenge</dt><dd>{summary.commonChallenge || "Not enough data"}</dd></div>
+            <div><dt>Win To Remember</dt><dd>{summary.bestWin || "Add a daily win to capture it here."}</dd></div>
           </dl>
 
           <div className="weekly-focus">
-            <span>Focus for the next seven logs</span>
+            <span>Focus For The Next Seven Logs</span>
             <p>{summary.focus}</p>
           </div>
         </>

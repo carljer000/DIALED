@@ -55,25 +55,25 @@ export default function SettingsPage() {
       <form className="settings-form" onSubmit={submit}>
         <section className="form-card">
           <div className="settings-card-heading">
-            <h2>Your targets</h2>
-            <span>New check-ins</span>
+            <h2>Your Targets</h2>
+            <span>New Check-Ins</span>
           </div>
           <label className="settings-row">
-            <span>Calorie target</span>
+            <span>Calorie Target</span>
             <span className="settings-value">
               <input type="number" min="1" name="targetCalories" value={form.targetCalories} onChange={change} required />
               <small>kcal</small>
             </span>
           </label>
           <label className="settings-row">
-            <span>Protein target</span>
+            <span>Protein Target</span>
             <span className="settings-value">
               <input type="number" min="1" name="targetProtein" value={form.targetProtein} onChange={change} required />
               <small>g</small>
             </span>
           </label>
           <label className="settings-row">
-            <span>Daily step goal</span>
+            <span>Daily Step Goal</span>
             <span className="settings-value">
               <input type="number" min="0" name="stepGoal" value={form.stepGoal} onChange={change} />
               <small>steps</small>
@@ -82,9 +82,9 @@ export default function SettingsPage() {
         </section>
 
         <section className="form-card">
-          <h2>Weight preferences</h2>
+          <h2>Weight Preferences</h2>
           <div className="settings-row">
-            <span>Preferred unit</span>
+            <span>Preferred Unit</span>
             <div className="unit-toggle" role="group" aria-label="Preferred weight unit">
               {["kg", "lb"].map((unit) => (
                 <button
@@ -100,14 +100,14 @@ export default function SettingsPage() {
             </div>
           </div>
           <label className="settings-row">
-            <span>Starting weight</span>
+            <span>Starting Weight</span>
             <span className="settings-value">
               <input type="number" min="1" step="0.1" name="startingWeight" value={form.startingWeight} onChange={change} placeholder="Optional" />
               <small>{form.weightUnit}</small>
             </span>
           </label>
           <label className="settings-row">
-            <span>Goal weight</span>
+            <span>Goal Weight</span>
             <span className="settings-value">
               <input type="number" min="1" step="0.1" name="goalWeight" value={form.goalWeight} onChange={change} placeholder="Optional" />
               <small>{form.weightUnit}</small>
@@ -116,9 +116,9 @@ export default function SettingsPage() {
         </section>
 
         <section className="form-card">
-          <h2>Check-in preferences</h2>
+          <h2>Check-In Preferences</h2>
           <label className="settings-row">
-            <span>Default training</span>
+            <span>Default Training</span>
             <select name="defaultTrainingStatus" value={form.defaultTrainingStatus} onChange={change}>
               <option value="">Choose each day</option>
               <option value="Rest day">Rest day</option>
@@ -128,7 +128,7 @@ export default function SettingsPage() {
           </label>
           <label className="settings-row settings-switch-row">
             <span>
-              Reflection prompts
+              Reflection Prompts
               <small>Show the rotating question above your reflection.</small>
             </span>
             <input type="checkbox" name="reflectionPrompts" checked={form.reflectionPrompts} onChange={change} />

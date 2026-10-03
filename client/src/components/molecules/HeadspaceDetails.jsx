@@ -2,8 +2,8 @@ import Button from "../atoms/Button.jsx";
 
 const scales = [
   { name: "energyLevel", label: "Energy", low: "Drained", high: "Strong" },
-  { name: "hungerLevel", label: "Hunger / cravings", low: "Low", high: "High" },
-  { name: "sleepQuality", label: "Sleep quality", low: "Poor", high: "Great" },
+  { name: "hungerLevel", label: "Hunger / Cravings", low: "Low", high: "High" },
+  { name: "sleepQuality", label: "Sleep Quality", low: "Poor", high: "Great" },
 ];
 
 const trainingOptions = ["Rest day", "Completed", "Missed"];
@@ -21,7 +21,7 @@ function ChoiceGroup({ label, options, value, onChange, className = "detail-opti
             aria-pressed={value === option}
             onClick={() => onChange(value === option ? "" : option)}
           >
-            {option}
+            {option === "Low energy" ? "Low Energy" : option === "Social event" ? "Social Event" : option}
           </Button>
         ))}
       </div>
@@ -33,14 +33,14 @@ export default function HeadspaceDetails({ form, onFieldChange }) {
   return (
     <div className="headspace-details">
       <p className="optional-heading">
-        Daily signals <span>Optional</span>
+        Daily Signals <span>Optional</span>
       </p>
 
       <div className="rating-list">
         {scales.map((scale) => (
           <fieldset className="rating-row" key={scale.name}>
             <legend>{scale.label}</legend>
-            <span>{scale.low}</span>
+            <div className="rating-scale">
             <div className="rating-options">
               {[1, 2, 3, 4, 5].map((rating) => (
                 <Button
@@ -54,7 +54,11 @@ export default function HeadspaceDetails({ form, onFieldChange }) {
                 </Button>
               ))}
             </div>
-            <span>{scale.high}</span>
+              <div className="rating-captions">
+                <span>{scale.low}</span>
+                <span>{scale.high}</span>
+              </div>
+            </div>
           </fieldset>
         ))}
       </div>
@@ -66,7 +70,7 @@ export default function HeadspaceDetails({ form, onFieldChange }) {
         onChange={(value) => onFieldChange("trainingStatus", value)}
       />
       <ChoiceGroup
-        label="Main challenge"
+        label="Main Challenge"
         options={challengeOptions}
         value={form.mainChallenge}
         onChange={(value) => onFieldChange("mainChallenge", value)}
@@ -74,7 +78,7 @@ export default function HeadspaceDetails({ form, onFieldChange }) {
       />
 
       <label className="note-label compact-note">
-        Win today
+        Win Today
         <input
           name="dailyWin"
           value={form.dailyWin}

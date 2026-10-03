@@ -19,16 +19,16 @@ const styles = {
   },
   label: { color: "var(--text-strong, #d5dbe3)", fontSize: "1.1rem", fontWeight: 700 },
   heading: { fontSize: "1.18rem", fontWeight: 800 },
-  reading: { alignItems: "baseline", display: "flex", gap: 10 },
+  reading: { alignItems: "center", display: "flex", gap: 10 },
   value: {
     color: "var(--accent, #ff3b45)",
     display: "block",
     fontFamily: displayFont,
-    fontSize: "1.7rem",
+    fontSize: "1.9rem",
     fontVariationSettings: "normal",
     fontWeight: 500,
     letterSpacing: "0.04em",
-    lineHeight: 1,
+    lineHeight: 1.3,
     textAlign: "right",
   },
   unit: { color: "var(--text-muted, #8fa0b5)", fontSize: "0.82rem", minWidth: 18 },
@@ -84,7 +84,7 @@ export default function GoalProgress({ progress }) {
       <div className="card-heading">
         <div>
           <p className="eyebrow">YOUR TARGET</p>
-          <h2 style={styles.heading}>Goal progress</h2>
+          <h2 style={styles.heading}>Goal Progress</h2>
         </div>
         <span className="chart-unit">{progress.unit}</span>
       </div>

@@ -10,7 +10,7 @@ export default function ProgressInsights({ insights }) {
       <div className="card-heading">
         <div>
           <p className="eyebrow">RECENT PATTERNS</p>
-          <h2>What the logs show</h2>
+          <h2>What the Logs Show</h2>
         </div>
         <span className="chart-unit">Last {insights.loggedDays || 0} logs</span>
       </div>
@@ -24,14 +24,14 @@ export default function ProgressInsights({ insights }) {
           <div className="consistency-bars">
             <div>
               <div className="insight-label">
-                <span>Calories on target</span>
+                <span>Calories On Target</span>
                 <strong>{insights.calorieConsistency}%</strong>
               </div>
               <div className="progress-track"><i style={{ width: `${insights.calorieConsistency}%` }} /></div>
             </div>
             <div>
               <div className="insight-label">
-                <span>Protein target reached</span>
+                <span>Protein Target Reached</span>
                 <strong>{insights.proteinConsistency}%</strong>
               </div>
               <div className="progress-track"><i style={{ width: `${insights.proteinConsistency}%` }} /></div>
@@ -39,7 +39,7 @@ export default function ProgressInsights({ insights }) {
             {insights.hasStepGoal && (
               <div>
                 <div className="insight-label">
-                  <span>Step goal reached</span>
+                  <span>Step Goal Reached</span>
                   <strong>{insights.stepConsistency}%</strong>
                 </div>
                 <div className="progress-track"><i style={{ width: `${insights.stepConsistency}%` }} /></div>
@@ -54,7 +54,7 @@ export default function ProgressInsights({ insights }) {
           </div>
 
           <div className="pattern-summary">
-            <span>Most common challenge</span>
+            <span>Most Common Challenge</span>
             <strong>{insights.commonChallenge || "Not enough data"}</strong>
           </div>
           <p className="pattern-message">{insights.message}</p>

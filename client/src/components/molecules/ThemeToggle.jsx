@@ -14,7 +14,7 @@ export default function ThemeToggle() {
   }
 
   return (
-    <div className="floating-theme-toggle" role="group" aria-label="Color theme">
+    <div className="theme-toggle" role="group" aria-label="Color theme">
       {themes.map((theme) => (
         <button
           key={theme.value}

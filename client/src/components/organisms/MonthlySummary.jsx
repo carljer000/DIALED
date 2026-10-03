@@ -24,7 +24,7 @@ export default function MonthlySummary({ summary }) {
       <div className="card-heading">
         <div>
           <p className="eyebrow">MONTH TO DATE</p>
-          <h2>Monthly progress</h2>
+          <h2>Monthly Progress</h2>
         </div>
         <span className="chart-unit">{formatMonth(summary.month)}</span>
       </div>
@@ -34,26 +34,26 @@ export default function MonthlySummary({ summary }) {
       ) : (
         <div className="monthly-summary-grid">
           <SummaryMetric
-            label="Logged days"
+            label="Logged Days"
             value={summary.loggedDays}
-            detail="check-ins"
+            detail="Check-Ins"
           />
           <SummaryMetric
-            label="Calories on target"
+            label="Calories On Target"
             value={summary.calorieConsistency === null ? null : `${summary.calorieConsistency}%`}
-            detail={`${summary.calorieLoggedDays} days with calorie data`}
+            detail={`${summary.calorieLoggedDays} Days With Calorie Data`}
           />
           <SummaryMetric
-            label="Protein on target"
+            label="Protein On Target"
             value={summary.proteinConsistency === null ? null : `${summary.proteinConsistency}%`}
-            detail={`${summary.proteinLoggedDays} days with protein data`}
+            detail={`${summary.proteinLoggedDays} Days With Protein Data`}
           />
           <SummaryMetric
-            label="Step goal met"
+            label="Step Goal Met"
             value={summary.stepConsistency === null ? null : `${summary.stepConsistency}%`}
             detail={summary.stepGoal === null
-              ? "Set a step goal in Settings"
-              : `${summary.stepLoggedDays} days with step data`}
+              ? "Set A Step Goal In Settings"
+              : `${summary.stepLoggedDays} Days With Step Data`}
           />
         </div>
       )}

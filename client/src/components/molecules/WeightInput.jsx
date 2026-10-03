@@ -17,7 +17,7 @@ export default function WeightInput({ value, unit, onChange, onUnitChange }) {
   return (
     <>
       <div className="weight-heading">
-        <span>Body weight</span>
+        <span>Body Weight</span>
         <div className="unit-toggle" role="group" aria-label="Weight unit">
           {units.map((option) => (
             <Button

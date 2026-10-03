@@ -4,7 +4,7 @@ import PageHeader from "../components/molecules/PageHeader.jsx";
 
 export default function TodayPage() {
   return (
-    <section className="page">
+    <section className="page today-page">
       <PageHeader
         eyebrow="DAILY CUT JOURNAL"
         title="Stay"

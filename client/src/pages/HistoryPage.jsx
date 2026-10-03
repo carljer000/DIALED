@@ -61,7 +61,7 @@ export default function HistoryPage() {
 
       <section className="history-filters" aria-label="Filter check-ins">
         <div className="history-filters-heading">
-          <h2>Filter check-ins</h2>
+          <h2>Filter Check-Ins</h2>
           <span>
             {filteredCheckins.length} {filteredCheckins.length === 1 ? "day" : "days"}
           </span>
@@ -106,8 +106,8 @@ export default function HistoryPage() {
               onChange={(event) => setResultFilter(event.target.value)}
             >
               <option value="all">All</option>
-              <option value="on-target">On target</option>
-              <option value="over-target">Over target</option>
+              <option value="on-target">On Target</option>
+              <option value="over-target">Over Target</option>
             </select>
           </label>
         </div>

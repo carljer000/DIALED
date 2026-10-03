@@ -5,7 +5,7 @@
   color: #9ea5af;
   display: inline-flex;
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 600;
   justify-content: center;
   min-height: 38px;
   padding: 0 13px;
@@ -19,7 +19,7 @@
 }
 
 .settings-link:hover, .back-link:hover {
-  border-color: #a62b35;
+  border-color: var(--accent);
   color: #ff3b45;
 }
 
@@ -33,8 +33,9 @@
 
 .settings-card-heading span {
   color: #777f89;
+  font-family: var(--font-meta);
   font-size: 0.66rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 1.2px;
   text-transform: uppercase;
 }
@@ -45,6 +46,7 @@
   color: #a8afb9;
   display: flex;
   font-size: 0.92rem;
+  font-weight: 600;
   justify-content: space-between;
   min-height: 64px;
 }
@@ -84,6 +86,7 @@
   border: 1px solid #30333a;
   border-radius: 8px;
   color: #d5d8dd;
+  font-weight: 600;
   padding: 9px 10px;
 }
 

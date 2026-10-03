@@ -1,5 +1,6 @@
 :root {
   --accent: #ff3b45;
+  --font-meta: "IBM Plex Mono", "Consolas", monospace;
   --line-color: #2c2f34;
   --text-muted: #8fa0b5;
   --text-strong: #d5dbe3;
@@ -19,7 +20,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   background-color: #000;
-  background-image: radial-gradient(circle, rgba(255, 59, 69, 0.58) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255, 59, 69, 0.58) 1.5px, transparent 1.65px);
   background-size: 72px 72px;
 }
 

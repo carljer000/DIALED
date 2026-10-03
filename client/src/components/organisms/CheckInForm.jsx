@@ -90,7 +90,7 @@ export default function CheckInForm() {
         </span>
       </div>
 
-      <section className="form-card">
+      <section className="form-card numbers-card">
         <h2>Numbers</h2>
         <WeightInput
           value={form.weight}
@@ -99,13 +99,15 @@ export default function CheckInForm() {
           onUnitChange={switchWeightUnit}
         />
         <div className="metric-grid">
-          <MetricInput label="Calorie target" name="targetCalories" value={form.targetCalories} onChange={change} suffix="kcal" />
-          <MetricInput label="Calories eaten" name="actualCalories" value={form.actualCalories} onChange={change} suffix="kcal" />
-          <MetricInput label="Protein target" name="targetProtein" value={form.targetProtein} onChange={change} suffix="g" />
-          <MetricInput label="Protein eaten" name="actualProtein" value={form.actualProtein} onChange={change} suffix="g" />
+          <MetricInput label="Calorie Target" name="targetCalories" value={form.targetCalories} onChange={change} suffix="kcal" />
+          <MetricInput label="Calories Eaten" name="actualCalories" value={form.actualCalories} onChange={change} suffix="kcal" />
+          <MetricInput label="Protein Target" name="targetProtein" value={form.targetProtein} onChange={change} suffix="g" />
+          <MetricInput label="Protein Eaten" name="actualProtein" value={form.actualProtein} onChange={change} suffix="g" />
         </div>
         <MetricInput
-          label={preferences.stepGoal ? `Steps · ${Number(preferences.stepGoal).toLocaleString()} goal` : "Steps"}
+          label={preferences.stepGoal ? (
+            <>Steps · <span className="step-goal-number">{Number(preferences.stepGoal).toLocaleString()}</span> Goal</>
+          ) : "Steps"}
           name="steps"
           value={form.steps}
           onChange={change}

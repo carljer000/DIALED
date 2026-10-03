@@ -36,9 +36,9 @@ export default function ConsistencyHeatmap({ checkins }) {
           })}
         </div>
         <div className="legend">
-          <span><i className="hit" />On target</span>
+          <span><i className="hit" />On Target</span>
           <span><i className="missed" />Over</span>
-          <span><i className="empty" />No log</span>
+          <span><i className="empty" />No Log</span>
         </div>
       </div>
     </section>
