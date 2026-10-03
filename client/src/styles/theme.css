@@ -15,9 +15,29 @@
 [data-theme="light"] .date-row,
 [data-theme="light"] .form-card,
 [data-theme="light"] .dashboard-card,
+[data-theme="light"] .history-filters,
 [data-theme="light"] .history-item {
   background: #fff;
   border-color: #c9cdd3;
+}
+
+[data-theme="light"] .history-filters-heading h2 { color: #24282f; }
+
+[data-theme="light"] .history-filters-heading > span,
+[data-theme="light"] .history-filter-field {
+  color: #596474;
+}
+
+[data-theme="light"] .history-filter-field input,
+[data-theme="light"] .history-filter-field select {
+  background: #fff;
+  border-color: #c9cdd3;
+  color: #24282f;
+  color-scheme: light;
+}
+
+[data-theme="light"] .history-filter-reset {
+  border-color: #e2a3a8;
 }
 
 [data-theme="light"] .subtle,

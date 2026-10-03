@@ -74,6 +74,87 @@
 
 .history-list { display: grid; gap: 12px; }
 .history-item { padding: 17px; }
+
+.history-filters {
+  background: #050505;
+  border: 1px solid #3c3c3c;
+  margin-bottom: 16px;
+  padding: 18px;
+}
+
+.history-filters-heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.history-filters-heading h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.history-filters-heading > span {
+  color: #8e949e;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.history-filter-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.history-filter-field {
+  color: #a8afb9;
+  display: grid;
+  font-size: 0.72rem;
+  font-weight: 700;
+  gap: 7px;
+  min-width: 0;
+}
+
+.history-filter-field input,
+.history-filter-field select {
+  appearance: auto;
+  background: #0c0c0d;
+  border: 1px solid #34383f;
+  border-radius: 0;
+  color: #f4f4f4;
+  color-scheme: dark;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0 11px;
+  width: 100%;
+}
+
+.history-filter-field input:focus,
+.history-filter-field select:focus {
+  border-color: #ff3b45;
+  outline: none;
+}
+
+.history-filter-reset {
+  background: transparent;
+  border: 1px solid #4a3034;
+  border-radius: 999px;
+  color: #ff3b45;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-top: 14px;
+  min-height: 42px;
+  padding: 0 15px;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.history-filter-reset:hover {
+  background: rgba(255, 59, 69, 0.08);
+  border-color: #ff3b45;
+}
+
 .history-top time { display: block; font-size: 1rem; font-weight: 800; }
 
 .result-badge {
@@ -347,6 +428,12 @@
 }
 
 @media (max-width: 520px) {
+  .history-filters { padding: 15px; }
+  .history-filter-grid { gap: 12px 10px; }
+  .history-filter-field { font-size: 0.68rem; }
+  .history-filter-field input,
+  .history-filter-field select { padding: 0 8px; }
+
   .goal-metric > div { flex-basis: 138px; }
 
   .goal-caption { align-items: flex-start; }
@@ -359,4 +446,8 @@
   .weekly-snapshot strong { margin-top: 0; }
   .weekly-details div { grid-template-columns: 1fr; gap: 5px; }
   .weekly-details dd { text-align: left; }
+}
+
+@media (max-width: 360px) {
+  .history-filter-grid { grid-template-columns: minmax(0, 1fr); }
 }
