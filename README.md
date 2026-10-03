@@ -1,14 +1,12 @@
 # DIALED
 
-> **AI assistance disclosure:** OpenAI Codex assisted with planning, design-system work, documentation, debugging, and implementation support.
-
-## 1. Overview
+## Overview
 
 DIALED is a daily cutting journal for lifters who want more structure and accountability while following a calorie deficit. It brings weight, calories, protein, steps, Headspace, and daily reflections into one check-in so users can see their consistency and progress over time.
 
 It is designed for gym-goers who already know their calorie and protein targets but can lose motivation or consistency during a cut. The app helps make daily choices visible, rather than relying only on memory or motivation.
 
-## 2. Setup and installation
+## Setup and installation
 
 ### Prerequisites
 
@@ -85,7 +83,7 @@ Never commit real database URLs, passwords, or project credentials. Keep them in
    npm run seed
    ```
 
-## 3. How to run it
+## How to run it
 
 Start the React client and Express API together:
 
@@ -108,7 +106,7 @@ npm run dev:server
 npm run dev:client
 ```
 
-## 4. Features and usage
+## Features and usage
 
 ### Daily check-in
 
@@ -122,9 +120,13 @@ Select **Log check-in** to save the entry. Saving the same date updates the exis
 
 Open the gear icon on the **Today** screen to set default calorie and protein targets, a daily step goal, preferred weight unit, optional starting and goal weights, default training status, and whether guided reflection prompts appear. These preferences are stored in the current browser and automatically apply to new check-ins; they can still be changed for an individual day.
 
+Use the floating sun/moon control to switch between light and dark mode. The selected theme is saved in the current browser and restored on the next visit.
+
 ### Dashboard and history
 
-Use **Dashboard** to see the current streak, on-target days, a 21-day calorie-consistency view, and a weight trend based on the latest 30 days of check-ins. Its Recent Patterns card also summarizes calorie and protein consistency, average energy, hunger and sleep, the most common challenge, and a cautious comparison between on-target and over-target days once enough data exists.
+Use **Dashboard** to see the current streak, on-target days, a 21-day calorie-consistency view, and a weight trend based on the latest 30 days of check-ins. The weight trend follows the selected kg/lb unit.
+
+Dashboard also includes goal progress from the optional starting and goal weights, step-goal consistency, Recent Patterns insights, and a weekly reflection summary. The weekly summary reviews the latest seven logs, including calorie, protein, and step consistency, common Headspace, the main challenge, a daily win, and a suggested focus for the next week. Pattern comparisons only appear when enough check-ins have been recorded.
 
 Use **History** to review past check-ins, including the saved Headspace details and reflections, or delete an entry when needed.
 
@@ -138,7 +140,7 @@ Use **History** to review past check-ins, including the saved Headspace details 
 | `POST` | `/api/checkins` | Creates or updates a daily check-in. |
 | `DELETE` | `/api/checkins/:id` | Deletes a check-in by ID. |
 
-## 5. Project structure
+## Project structure
 
 ```text
 dialed/
@@ -160,7 +162,7 @@ dialed/
 `-- README.md                   # Project documentation
 ```
 
-## 6. Screenshots
+## Screenshots
 
 ### Today - Daily check-in
 
@@ -172,7 +174,7 @@ The Today screen records weight, calorie and protein targets, steps, Headspace s
 
 ![DIALED Dashboard mobile screen](screenshots/dashboard-mobile.png)
 
-The Dashboard shows the current streak, on-target days, 21-day calorie consistency, and the weight-trend area.
+The Dashboard shows the current streak, on-target days, 21-day calorie consistency, goal progress, step consistency, and the weight-trend area.
 
 ### Headspace and Reflection detail
 
@@ -180,20 +182,18 @@ The Dashboard shows the current streak, on-target days, 21-day calorie consisten
 
 The Headspace section keeps the DIALED black, white, and red visual system while allowing optional detail when users need it.
 
-## 7. Known issues and next steps
+## Known issues and next steps
 
 ### Known issues
 
-- The Supabase database is deployed, but the React frontend and Express API are not publicly deployed yet.
-- The current API has no user authentication or per-user ownership, so it is not ready for a public multi-user health-data release.
-- The new Headspace details are saved in History, but Dashboard does not yet turn them into useful patterns or insights.
-- The reflection flow works but still needs further streamlining to make it more engaging and cohesive for daily use.
+- The Supabase database is deployed, but the React frontend and Express API are possibly not publicly deployed.
+- The reflection flow works and now has a weekly summary, but it still needs further streamlining to make it more engaging and cohesive for daily use.
 
 ### Next steps
 
-- Improve the Headspace and Reflection flow and add useful insight patterns to Dashboard.
-- Add a light mode while preserving the existing DIALED design language.
-- Research Gemini AI-assisted food tracking, including accuracy, privacy, and cost before implementation.
-- Add authentication, user ownership, rate limiting, and stronger API security.
-- Deploy the React frontend and Express API so DIALED works outside local development.
+- Add History filters and monthly progress summaries.
+- Improve the Headspace and Reflection flow and add more useful insight patterns to Dashboard.
+- Research Gemini AI-assisted food tracking, including accuracy, privacy, and cost before possible implementation.
+- Possibly deploy the React frontend and Express API so DIALED can work outside local development.
+
 
