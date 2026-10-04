@@ -200,4 +200,12 @@ The Headspace section keeps the DIALED black, white, and red visual system while
 - Research Gemini AI-assisted food tracking, including accuracy, privacy, and cost before possible implementation.
 - Possibly deploy the React frontend and Express API so DIALED can work outside local development.
 
+## AI Use
+
+[![Built with AI assistance](https://img.shields.io/badge/Built_with-AI_assistance-blue)](AI-USAGE.md)
+
+This project was built with help from OpenAI Codex for implementation support, debugging, and interface refinement. I chose the daily cutting-journal workflow, directed the feature and visual decisions, tested the app on desktop and mobile, and refined the results through feedback and screenshots. I also wrote and edited the CSS, History filters, and monthly dashboard summary described in the project record.
+
+The full disclosure, including commit links, is in [AI-USAGE.md](AI-USAGE.md).
+
 
