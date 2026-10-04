@@ -6,7 +6,7 @@ export default function PageHeader({ eyebrow, title, accent, subtitle, action })
       <div className="page-header-top">
         <div className="page-header-brand">
           <span className="page-header-logo-frame" aria-hidden="true">
-            <img className="page-header-logo" src="/dialed-cat-logo.png" alt="" />
+            <img className="page-header-logo" src="/dialed-logo.png" alt="" />
           </span>
           <p className="eyebrow">{eyebrow}</p>
         </div>
