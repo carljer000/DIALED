@@ -1,5 +1,9 @@
 # DIALED
 
+[![Made with AI](https://img.shields.io/badge/Made_with-AI_assistance-blue)](AI-USAGE.md)
+
+Built with Codex AI assistance throughout planning, implementation, testing, and interface refinement. See [AI-USAGE.md](AI-USAGE.md) for the full disclosure.
+
 ## Overview
 
 DIALED is a daily cutting journal for lifters who want more structure and accountability while following a calorie deficit. It brings weight, calories, protein, steps, Headspace, and daily reflections into one check-in so users can see their consistency and progress over time.
