@@ -40,7 +40,7 @@ export default function WeightTrendChart({ checkins, unit = "kg" }) {
               <XAxis dataKey="date" tickFormatter={(date) => shortDate(date).toUpperCase()} tick={axisTick} axisLine={false} tickLine={false} interval="preserveStartEnd" />
               <YAxis dataKey="displayWeight" tick={axisTick} axisLine={false} tickLine={false} domain={["dataMin - 0.5", "dataMax + 0.5"]} />
               <Tooltip labelFormatter={shortDate} formatter={(value) => [`${value} ${unit}`, "Weight"]} contentStyle={{ background: "#171a1f", border: "1px solid #2a3038", borderRadius: 12 }} />
-              <Line type="monotone" dataKey="displayWeight" stroke="#ff3b45" strokeWidth={3} dot={false} activeDot={{ r: 5, fill: "#ff3b45" }} />
+              <Line type="monotone" dataKey="displayWeight" stroke="#b82030" strokeWidth={3} dot={false} activeDot={{ r: 5, fill: "#b82030" }} />
             </LineChart>
           </ResponsiveContainer>
         </div>

@@ -40,7 +40,7 @@
 }
 
 .page-header em {
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-style: normal;
 }
 
@@ -113,7 +113,7 @@
 }
 
 .nav-item span { font-size: 1.35rem; line-height: 1; }
-.nav-item.active { color: #ff3b45; }
+.nav-item.active { color: var(--accent-ink); }
 
 @media (min-width: 640px) {
   .page { padding: 56px 32px 40px; }

@@ -20,7 +20,7 @@
 
 .settings-link:hover, .back-link:hover {
   border-color: var(--accent);
-  color: #ff3b45;
+  color: var(--accent-ink);
 }
 
 .settings-form { display: grid; gap: 16px; }
@@ -61,7 +61,7 @@
   width: 132px;
   background: transparent;
   border: 0;
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.45rem;
   outline: none;
@@ -99,7 +99,7 @@
 }
 
 .settings-switch-row input[type="checkbox"] {
-  accent-color: #ff3b45;
+  accent-color: #b82030;
   height: 20px;
   width: 20px;
 }

@@ -21,7 +21,7 @@ const styles = {
   heading: { fontSize: "1.18rem", fontWeight: 800 },
   reading: { alignItems: "center", display: "flex", gap: 10 },
   value: {
-    color: "var(--accent, #ff3b45)",
+    color: "var(--accent-ink, #b82030)",
     display: "block",
     fontFamily: displayFont,
     fontSize: "1.9rem",
@@ -38,7 +38,7 @@ const styles = {
     marginTop: 24,
     overflow: "hidden",
   },
-  fill: { background: "var(--accent, #ff3b45)", display: "block", height: "100%" },
+  fill: { background: "var(--accent, #b82030)", display: "block", height: "100%" },
   summary: {
     alignItems: "baseline",
     display: "flex",
@@ -48,7 +48,7 @@ const styles = {
     marginTop: 14,
   },
   percentage: {
-    color: "var(--accent, #ff3b45)",
+    color: "var(--accent-ink, #b82030)",
     fontFamily: displayFont,
     fontSize: "1.45rem",
     fontVariationSettings: "normal",
@@ -57,7 +57,7 @@ const styles = {
   },
   remaining: { color: "var(--text-muted, #aeb6c1)", fontSize: "0.9rem" },
   remainingNumber: {
-    color: "var(--accent, #ff3b45)",
+    color: "var(--accent-ink, #b82030)",
     fontFamily: displayFont,
     fontSize: "1.2rem",
     fontVariationSettings: "normal",

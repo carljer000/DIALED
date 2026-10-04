@@ -22,7 +22,7 @@
 }
 
 .stat-grid strong {
-  color: #ff3b45;
+  color: var(--accent-ink);
   display: block;
   font-size: 2rem;
   letter-spacing: -0.07em;
@@ -43,9 +43,9 @@
 .lime-dot {
   width: 9px;
   height: 9px;
-  background: #ff3b45;
+  background: #b82030;
   border-radius: 50%;
-  box-shadow: 0 0 18px #ff3b45;
+  box-shadow: 0 0 18px #b82030;
 }
 
 .chart-unit { color: #8e949e; font-size: 0.75rem; }
@@ -58,7 +58,7 @@
 }
 
 .heatmap-cell { aspect-ratio: 1; border-radius: 5px; }
-.heatmap-cell.hit, .legend i.hit { background: #ff3b45; }
+.heatmap-cell.hit, .legend i.hit { background: #b82030; }
 .heatmap-cell.missed, .legend i.missed { background: #79343a; }
 .heatmap-cell.empty, .legend i.empty { background: #2b3038; }
 
@@ -99,7 +99,7 @@
 }
 
 .monthly-summary-metric > strong {
-  color: #ff3b45;
+  color: var(--accent-ink);
   display: block;
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: clamp(1.15rem, 4vw, 1.55rem);
@@ -174,7 +174,7 @@
 
 .history-filter-field input:focus,
 .history-filter-field select:focus {
-  border-color: #ff3b45;
+  border-color: #b82030;
   outline: none;
 }
 
@@ -182,7 +182,7 @@
   background: transparent;
   border: 1px solid #34383f;
   border-radius: 999px;
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-size: 0.75rem;
   font-weight: 600;
   margin-top: 14px;
@@ -192,8 +192,8 @@
 }
 
 .history-filter-reset:hover {
-  background: rgba(255, 59, 69, 0.08);
-  border-color: #ff3b45;
+  background: rgba(184, 32, 48, 0.08);
+  border-color: #b82030;
 }
 
 .history-top time { display: block; font-size: 1rem; font-weight: 600; }
@@ -208,7 +208,7 @@
   padding: 5px 8px;
 }
 
-.result-badge.hit { background: #3c191d; color: #ff3b45; }
+.result-badge.hit { background: #3c191d; color: var(--accent-ink); }
 .result-badge.missed { background: #3c2923; color: #ffad7d; }
 
 .delete-button {
@@ -229,7 +229,7 @@
 }
 
 .history-metrics span {
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-size: 0.92rem;
   font-variant-numeric: tabular-nums;
 }
@@ -263,7 +263,7 @@
 }
 
 .insight-label strong {
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.2rem;
   font-weight: 500;
@@ -277,7 +277,7 @@
 }
 
 .progress-track i {
-  background: #ff3b45;
+  background: #b82030;
   display: block;
   height: 100%;
   min-width: 2px;
@@ -321,14 +321,14 @@
 .pattern-summary strong {
   border: 1px solid var(--accent);
   border-radius: 999px;
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-size: 0.72rem;
   padding: 6px 9px;
 }
 
 .pattern-message {
   background: #121214;
-  border-left: 3px solid #ff3b45;
+  border-left: 3px solid #b82030;
   color: #c7cbd1;
   font-size: 0.82rem;
   line-height: 1.55;
@@ -337,7 +337,7 @@
 }
 
 .goal-card .empty-state a {
-  color: #ff3b45;
+  color: var(--accent-ink);
 }
 
 .goal-metrics {
@@ -353,7 +353,7 @@
 }
 
 .goal-metric output {
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.55rem;
   font-variation-settings: normal;
@@ -369,7 +369,7 @@
 }
 
 .goal-track i {
-  background: #ff3b45;
+  background: #b82030;
   display: block;
   height: 100%;
   min-width: 2px;
@@ -386,7 +386,7 @@
 }
 
 .goal-percentage {
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1rem;
   font-variation-settings: "wght" 500;
@@ -419,7 +419,7 @@
 }
 
 .weekly-snapshot strong {
-  color: #ff3b45;
+  color: var(--accent-ink);
   display: block;
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.45rem;
@@ -455,13 +455,13 @@
 
 .weekly-focus {
   background: #121214;
-  border-left: 3px solid #ff3b45;
+  border-left: 3px solid #b82030;
   margin-top: 8px;
   padding: 14px;
 }
 
 .weekly-focus span {
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-family: var(--font-meta);
   font-size: 0.66rem;
   font-weight: 500;

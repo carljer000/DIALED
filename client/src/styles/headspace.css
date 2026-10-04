@@ -74,7 +74,7 @@
 
 .rating-options button.selected, .detail-options button.selected {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 800;
 }
 
@@ -127,9 +127,9 @@
   padding: 5px 8px;
 }
 
-.history-headspace strong { border-color: var(--accent); color: var(--accent); }
+.history-headspace strong { border-color: var(--accent); color: var(--accent-ink); }
 .history-item .daily-win { color: #f2f2f2; }
-.daily-win strong { color: #ff3b45; }
+.daily-win strong { color: var(--accent-ink); }
 
 @media (max-width: 520px) {
   .challenge-options { grid-template-columns: repeat(2, 1fr); }

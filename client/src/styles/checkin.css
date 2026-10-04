@@ -52,7 +52,7 @@
   text-transform: uppercase;
 }
 
-.status-chip.saved { border-color: var(--accent); color: var(--accent); }
+.status-chip.saved { border-color: var(--accent); color: var(--accent-ink); }
 
 .weight-heading {
   align-items: center;
@@ -61,6 +61,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   justify-content: space-between;
+  min-height: 72px;
 }
 
 .weight-heading > span, .metric-input > span {
@@ -93,7 +94,7 @@
 .unit-toggle button.selected {
   background: transparent;
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .metric-grid {
@@ -125,7 +126,7 @@
 }
 
 .step-goal-number {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.3rem;
   font-variation-settings: normal;
@@ -149,7 +150,7 @@
   min-width: 0;
   background: transparent;
   border: 0;
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.9rem;
   font-variation-settings: normal;
@@ -199,7 +200,7 @@
   min-width: 0;
   background: transparent;
   border: 0;
-  color: #ff3b45;
+  color: var(--accent-ink);
   font-family: "Bitcount Single", "DotGothic16", monospace;
   font-size: 1.9rem;
   font-weight: 500;
@@ -233,7 +234,7 @@
 .motivation button.selected {
   background: transparent;
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 800;
 }
 
@@ -266,7 +267,7 @@
 }
 
 .on-target, .over-target { font-size: 0.76rem; font-weight: 700; }
-.on-target { color: #ff3b45; }
+.on-target { color: var(--accent-ink); }
 .over-target { color: #ff9b61; }
 
 .primary-button {
@@ -274,7 +275,7 @@
   background: transparent;
   border: 1px solid var(--accent);
   border-radius: 999px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -286,9 +287,9 @@
 
 .checkin-footer .primary-button {
   align-items: center;
-  background: #ff3b45;
-  border-color: #ff3b45;
-  color: #101012;
+  background: #b82030;
+  border-color: #b82030;
+  color: #000;
   display: flex;
   gap: 10px;
   justify-content: center;
@@ -301,8 +302,8 @@
 }
 
 .checkin-footer .primary-button:hover:not(:disabled) {
-  background: #ff6269;
-  border-color: #ff6269;
+  background: #ce3042;
+  border-color: #ce3042;
 }
 
 @media (min-width: 640px) {
