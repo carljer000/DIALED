@@ -4,7 +4,12 @@ export default function PageHeader({ eyebrow, title, accent, subtitle, action })
   return (
     <header className="page-header">
       <div className="page-header-top">
-        <p className="eyebrow">{eyebrow}</p>
+        <div className="page-header-brand">
+          <span className="page-header-logo-frame" aria-hidden="true">
+            <img className="page-header-logo" src="/dialed-cat-logo.png" alt="" />
+          </span>
+          <p className="eyebrow">{eyebrow}</p>
+        </div>
         <div className="page-header-actions">
           <ThemeToggle />
           {action}

@@ -28,7 +28,7 @@ export default function TodayPage() {
       <PageHeader
         eyebrow="DAILY CUT JOURNAL"
         title="Stay"
-        accent="Dialed."
+        accent="DIALED."
         subtitle="Small actions, visible proof."
         action={
           <Link
