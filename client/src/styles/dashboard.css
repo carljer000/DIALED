@@ -164,7 +164,7 @@
   appearance: auto;
   background: #0c0c0d;
   border: 1px solid #34383f;
-  border-radius: 0;
+  border-radius: 4px;
   color: #f4f4f4;
   color-scheme: dark;
   font-family: var(--font-meta);
@@ -176,11 +176,6 @@
   padding: 0 11px;
   text-transform: uppercase;
   width: 100%;
-}
-
-.history-filter-field input[type="date"]::-webkit-calendar-picker-indicator {
-  margin-left: 8px;
-  transform: translateX(-36px);
 }
 
 .history-filter-field input:focus,

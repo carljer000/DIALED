@@ -43,11 +43,6 @@
   -webkit-text-fill-color: #fff;
 }
 
-.date-row input[type="date"]::-webkit-calendar-picker-indicator {
-  margin-left: 8px;
-  transform: translateX(-36px);
-}
-
 .status-chip {
   border: 1px solid #34363b;
   border-radius: 999px;

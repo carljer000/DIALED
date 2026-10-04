@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { flushSync } from "react-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/atoms/Button.jsx";
 import StateMessage from "../components/atoms/StateMessage.jsx";
 import PageHeader from "../components/molecules/PageHeader.jsx";
 import { useDialed } from "../context/DialedContext.jsx";
 
 export default function SettingsPage() {
+  const navigate = useNavigate();
   const { preferences, savePreferences } = useDialed();
   const [form, setForm] = useState(preferences);
   const [message, setMessage] = useState("");
@@ -38,6 +40,23 @@ export default function SettingsPage() {
     setMessage("");
   }
 
+  function returnToToday(event) {
+    event.preventDefault();
+    const root = document.documentElement;
+    const goToToday = () => flushSync(() => navigate("/"));
+
+    if (typeof document.startViewTransition !== "function") {
+      goToToday();
+      return;
+    }
+
+    root.dataset.pageTransition = "settings-out";
+    const transition = document.startViewTransition(goToToday);
+    transition.finished.finally(() => {
+      delete root.dataset.pageTransition;
+    });
+  }
+
   return (
     <section className="page settings-page">
       <PageHeader
@@ -46,7 +65,12 @@ export default function SettingsPage() {
         accent="Settings."
         subtitle="Set it once. Adjust any individual day when life changes."
         action={
-          <Link className="back-link" to="/">
+          <Link
+            className="back-link"
+            to="/"
+            viewTransition
+            onClick={returnToToday}
+          >
             ← Today
           </Link>
         }
