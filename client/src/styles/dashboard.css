@@ -86,6 +86,7 @@
 
 .monthly-summary-metric {
   border: 1px solid #2c2f34;
+  border-radius: 4px;
   min-width: 0;
   padding: 13px 11px;
 }
@@ -300,7 +301,7 @@
   margin-top: 24px;
 }
 
-.signal-grid article { border: 1px solid #2c2f34; padding: 13px 11px; }
+.signal-grid article { border: 1px solid #2c2f34; border-radius: 4px; padding: 13px 11px; }
 .signal-grid span, .signal-grid small { color: #777f89; display: block; font-size: 0.65rem; }
 .signal-grid span { font-weight: 600; text-transform: uppercase; }
 .signal-grid small { font-family: var(--font-meta); text-transform: uppercase; }
@@ -417,6 +418,7 @@
 
 .weekly-snapshot div {
   border: 1px solid #2c2f34;
+  border-radius: 4px;
   padding: 13px 10px;
 }
 
