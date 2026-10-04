@@ -35,10 +35,10 @@ export default function WeightTrendChart({ checkins, unit = "kg" }) {
       </div>
       {chartData.length > 1 ? (
         <div className="chart">
-          <ResponsiveContainer width="100%" height={220}>
-            <LineChart data={chartData} margin={{ top: 12, right: 4, left: -20, bottom: 0 }}>
-              <XAxis dataKey="date" tickFormatter={(date) => shortDate(date).toUpperCase()} tick={axisTick} axisLine={false} tickLine={false} interval="preserveStartEnd" />
-              <YAxis dataKey="displayWeight" tick={axisTick} axisLine={false} tickLine={false} domain={["dataMin - 0.5", "dataMax + 0.5"]} />
+          <ResponsiveContainer width="100%" height={248}>
+            <LineChart data={chartData} margin={{ top: 12, right: 12, left: 0, bottom: 16 }}>
+              <XAxis dataKey="date" tickFormatter={(date) => shortDate(date).toUpperCase()} tick={axisTick} height={52} tickMargin={28} minTickGap={16} axisLine={false} tickLine={false} interval="preserveStartEnd" />
+              <YAxis dataKey="displayWeight" tick={axisTick} width={46} axisLine={false} tickLine={false} domain={["dataMin - 0.5", "dataMax + 0.5"]} />
               <Tooltip labelFormatter={shortDate} formatter={(value) => [`${value} ${unit}`, "Weight"]} contentStyle={{ background: "#171a1f", border: "1px solid #2a3038", borderRadius: 12 }} />
               <Line type="monotone" dataKey="displayWeight" stroke="#b82030" strokeWidth={3} dot={false} activeDot={{ r: 5, fill: "#b82030" }} />
             </LineChart>

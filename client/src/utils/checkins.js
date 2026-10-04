@@ -25,6 +25,14 @@ const reflectionPrompts = [
   "What affected your energy, hunger, or focus today?",
   "What would make tomorrow's check-in easier?",
   "What are you proud of today, even if the plan was not perfect?",
+  "What felt easier than usual today?",
+  "What almost knocked you off track, and what helped?",
+  "What did you do today that future-you will appreciate?",
+  "When did you feel most in control today?",
+  "What is one small choice you want to repeat tomorrow?",
+  "What do you need more of right now: rest, food, movement, or support?",
+  "What did you notice about your hunger, energy, or mood today?",
+  "What’s one thing you handled better than you would have before?",
 ];
 
 export function reflectionPromptForDate(date) {
@@ -258,7 +266,10 @@ function weeklyFocus(summary) {
 
   const challengeFocus = {
     Hunger: "Prepare a higher-volume meal for the time hunger usually hits.",
+    Cravings: "Plan a satisfying portion before the craving window so the choice stays intentional.",
     "Low energy": "Reduce friction: prepare tomorrow’s food and training plan tonight.",
+    "Low motivation": "Shrink tomorrow’s plan to the smallest action you can start without negotiating.",
+    Boredom: "Change one meal, route, or training detail so the routine still feels yours.",
     "Social event": "Decide your flexible meal and calorie buffer before the event.",
     Stress: "Choose one simple fallback meal for stressful days.",
     Time: "Pre-log one fast meal you can repeat when time is tight.",

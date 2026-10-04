@@ -117,14 +117,15 @@
   text-transform: none;
 }
 
-.history-headspace { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+.history-headspace { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 
 .history-headspace strong, .history-headspace span {
   border: 1px solid #34363b;
   border-radius: 999px;
   color: #9ea5af;
-  font-size: 0.67rem;
-  padding: 5px 8px;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  padding: 7px 10px;
 }
 
 .history-headspace strong { border-color: var(--accent); color: var(--accent-ink); }

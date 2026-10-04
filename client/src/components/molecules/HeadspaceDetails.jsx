@@ -7,7 +7,24 @@ const scales = [
 ];
 
 const trainingOptions = ["Rest day", "Completed", "Missed"];
-const challengeOptions = ["Hunger", "Low energy", "Social event", "Stress", "Time", "Injury", "Other"];
+const challengeOptions = [
+  "Hunger",
+  "Cravings",
+  "Low energy",
+  "Low motivation",
+  "Boredom",
+  "Social event",
+  "Stress",
+  "Time",
+  "Injury",
+  "Other",
+];
+
+const optionLabels = {
+  "Low energy": "Low Energy",
+  "Low motivation": "Low Motivation",
+  "Social event": "Social Event",
+};
 
 function ChoiceGroup({ label, options, value, onChange, className = "detail-options" }) {
   return (
@@ -21,7 +38,7 @@ function ChoiceGroup({ label, options, value, onChange, className = "detail-opti
             aria-pressed={value === option}
             onClick={() => onChange(value === option ? "" : option)}
           >
-            {option === "Low energy" ? "Low Energy" : option === "Social event" ? "Social Event" : option}
+            {optionLabels[option] || option}
           </Button>
         ))}
       </div>
