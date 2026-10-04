@@ -1,8 +1,9 @@
 .stat-grid {
   display: grid;
   gap: 12px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-bottom: 16px;
+  min-width: 0;
 }
 
 .stat-grid article {
@@ -10,10 +11,11 @@
   border: 1px solid #3c3c3c;
   border-radius: 18px;
   color: white;
+  min-width: 0;
   padding: 17px;
 }
 
-.stat-grid span { display: block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; }
+.stat-grid span { display: block; font-size: 0.72rem; font-weight: 600; line-height: 1.35; text-transform: uppercase; }
 
 .stat-grid strong, .history-metrics span {
   font-family: "Bitcount Single", "DotGothic16", monospace;
@@ -52,9 +54,10 @@
 
 .heatmap-days {
   display: grid;
-  gap: 7px;
-  grid-template-columns: repeat(7, 1fr);
+  gap: clamp(4px, 1.7vw, 7px);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   margin: 24px 0 14px;
+  min-width: 0;
 }
 
 .heatmap-cell { aspect-ratio: 1; border-radius: 5px; }
@@ -65,9 +68,10 @@
 .legend {
   color: #8b929b;
   display: flex;
+  flex-wrap: wrap;
   font-family: var(--font-meta);
   font-size: 0.7rem;
-  gap: 13px;
+  gap: 8px 13px;
   text-transform: uppercase;
 }
 
@@ -82,6 +86,7 @@
   gap: 10px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: 20px;
+  min-width: 0;
 }
 
 .monthly-summary-metric {
@@ -97,6 +102,7 @@
   display: block;
   font-size: 0.66rem;
   line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 .monthly-summary-metric > strong {
@@ -487,6 +493,19 @@
   .monthly-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .history-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
+  .stat-grid { gap: 10px; }
+  .stat-grid article { padding: clamp(12px, 3.6vw, 16px); }
+  .stat-grid span { font-size: clamp(0.62rem, 2.5vw, 0.72rem); }
+  .stat-grid strong { font-size: clamp(1.4rem, 6.8vw, 1.85rem); }
+
+  .dashboard-card { padding: clamp(14px, 4vw, 18px); }
+  .monthly-summary-grid { gap: 8px; margin-top: 16px; }
+  .monthly-summary-metric { padding: 11px 9px; }
+  .monthly-summary-metric > span { font-size: clamp(0.58rem, 2.35vw, 0.66rem); }
+  .monthly-summary-metric > small { font-size: clamp(0.64rem, 2.7vw, 0.76rem); }
+  .chart-unit { max-width: 42%; text-align: right; }
+  .legend { column-gap: 10px; font-size: clamp(0.58rem, 2.6vw, 0.7rem); }
+
   .history-filters { padding: 15px; }
   .history-filter-grid { gap: 12px 10px; }
   .history-filter-field { font-size: 0.68rem; }
@@ -509,5 +528,9 @@
 
 @media (max-width: 360px) {
   .history-filter-grid { grid-template-columns: minmax(0, 1fr); }
-  .monthly-summary-metric { padding: 11px 9px; }
+  .stat-grid { grid-template-columns: minmax(0, 1fr); }
+  .stat-grid article { padding: 14px; }
+  .monthly-summary-metric { padding: 10px 8px; }
+  .monthly-summary-metric > span { min-height: 2.5em; }
+  .heatmap-cell { border-radius: 4px; }
 }
