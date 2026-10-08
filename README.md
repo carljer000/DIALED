@@ -149,6 +149,7 @@ Use **History** to review past check-ins, including the saved Headspace details 
 ```text
 dialed/
 |-- client/                     # React + Vite frontend
+|   |-- logo/                   # Static logo assets copied into the Vite build
 |   `-- src/
 |       |-- components/         # Atoms, molecules, and organisms
 |       |-- context/            # Shared check-in state
@@ -162,9 +163,13 @@ dialed/
 |   `-- seed.js                 # Optional sample check-ins
 |-- supabase/migrations/        # Versioned database schema changes
 |-- screenshots/                # README preview images
+|-- AI-USAGE.md                 # AI-assistance disclosure
+|-- REPOSITORY_GUIDE.md         # Detailed file map and application flows
 |-- REPORT.md                   # Weekly development report
 `-- README.md                   # Project documentation
 ```
+
+For the complete request, data, screen, and folder flows, see [REPOSITORY_GUIDE.md](REPOSITORY_GUIDE.md).
 
 ## Screenshots
 
@@ -186,19 +191,11 @@ The Dashboard shows the current streak, on-target days, 21-day calorie consisten
 
 The Headspace section keeps the DIALED black, white, and red visual system while allowing optional detail when users need it.
 
-## Known issues and next steps
+## Current limitations and next steps
 
-### Known issues
-
-- The Supabase database is deployed, but the React frontend and Express API are possibly not publicly deployed.
-- The reflection flow works and now has a weekly summary, but it still needs further streamlining to make it more engaging and cohesive for daily use.
-
-### Next steps
-
-- Add History filters and monthly progress summaries.
-- Improve the Headspace and Reflection flow and add more useful insight patterns to Dashboard.
-- Research Gemini AI-assisted food tracking, including accuracy, privacy, and cost before possible implementation.
-- Possibly deploy the React frontend and Express API so DIALED can work outside local development.
+- Preferences are stored per browser rather than in the database, so they do not sync between devices.
+- The current schema is designed for one journal and does not yet include user authentication or account-level data separation.
+- Future work could add authenticated accounts and carefully research optional AI-assisted food tracking, including accuracy, privacy, and cost.
 
 ## AI Use
 

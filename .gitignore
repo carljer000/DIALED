@@ -8,3 +8,6 @@ client/.env.*.local
 *.log
 supabase/.temp/
 tmp/
+.presentation-build/
+presentation/
+PRESENTATION_HANDOFF.md
