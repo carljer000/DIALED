@@ -1,3 +1,5 @@
+import { useLayoutEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { NavLink } from "react-router-dom";
 
 const items = [
@@ -40,8 +42,41 @@ function NavIcon({ name }) {
 }
 
 export default function BottomNav() {
-  return (
-    <nav className="bottom-nav" aria-label="Main navigation">
+  const navRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return undefined;
+
+    let frame = 0;
+    const placeNav = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const viewport = window.visualViewport;
+        const viewportTop = viewport?.offsetTop ?? 0;
+        const viewportHeight = viewport?.height ?? window.innerHeight;
+        const pageTop = window.scrollY + viewportTop;
+        nav.style.top = `${Math.max(12, pageTop + viewportHeight - nav.offsetHeight - 12)}px`;
+      });
+    };
+
+    placeNav();
+    window.addEventListener("scroll", placeNav, { passive: true });
+    window.addEventListener("resize", placeNav);
+    window.visualViewport?.addEventListener("scroll", placeNav, { passive: true });
+    window.visualViewport?.addEventListener("resize", placeNav);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", placeNav);
+      window.removeEventListener("resize", placeNav);
+      window.visualViewport?.removeEventListener("scroll", placeNav);
+      window.visualViewport?.removeEventListener("resize", placeNav);
+    };
+  }, []);
+
+  const navigation = (
+    <nav ref={navRef} className="bottom-nav" aria-label="Main navigation">
       {items.map((item) => (
         <NavLink
           key={item.to}
@@ -55,4 +90,6 @@ export default function BottomNav() {
       ))}
     </nav>
   );
+
+  return createPortal(navigation, document.body);
 }

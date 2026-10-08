@@ -14,12 +14,16 @@
 }
 
 * { box-sizing: border-box; }
-html, #root { width: 100%; }
+html, body, #root { min-height: 100%; width: 100%; }
+
+html { overflow-x: clip; }
 
 body {
+  min-height: 100vh;
+  min-height: 100dvh;
   min-width: 320px;
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   background-color: #000;
   background-image: radial-gradient(circle, rgba(184, 32, 48, 0.58) 1.9px, transparent 2.05px);
   background-size: 58px 58px;
