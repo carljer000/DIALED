@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "node --watch src/server.js",
     "start": "node src/server.js",
+    "test": "node --test",
     "db:seed": "node seed.js",
     "db:migrate:supabase": "node scripts/migrate-to-supabase.js"
   },

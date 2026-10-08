@@ -2,7 +2,7 @@ import { useState } from "react";
 import CheckInCard from "../molecules/CheckInCard.jsx";
 import StateMessage from "../atoms/StateMessage.jsx";
 
-export default function HistoryList({ checkins, onDelete }) {
+export default function HistoryList({ checkins, onDelete, weightUnit }) {
   const [deletingId, setDeletingId] = useState("");
   const [deleteError, setDeleteError] = useState("");
 
@@ -32,6 +32,7 @@ export default function HistoryList({ checkins, onDelete }) {
             checkin={checkin}
             deleting={deletingId === checkin.id}
             onDelete={remove}
+            weightUnit={weightUnit}
           />
         ))}
       </div>

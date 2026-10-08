@@ -5,6 +5,7 @@ import Button from "../components/atoms/Button.jsx";
 import StateMessage from "../components/atoms/StateMessage.jsx";
 import PageHeader from "../components/molecules/PageHeader.jsx";
 import { useDialed } from "../context/DialedContext.jsx";
+import { convertWeightValue } from "../utils/checkins.js";
 
 export default function SettingsPage() {
   const navigate = useNavigate();
@@ -29,13 +30,11 @@ export default function SettingsPage() {
 
   function switchWeightUnit(nextUnit) {
     if (nextUnit === form.weightUnit) return;
-    const factor = nextUnit === "lb" ? 2.20462 : 1 / 2.20462;
-    const convert = (value) => value ? (Number(value) * factor).toFixed(1) : "";
     setForm((current) => ({
       ...current,
       weightUnit: nextUnit,
-      startingWeight: convert(current.startingWeight),
-      goalWeight: convert(current.goalWeight),
+      startingWeight: convertWeightValue(current.startingWeight, current.weightUnit, nextUnit),
+      goalWeight: convertWeightValue(current.goalWeight, current.weightUnit, nextUnit),
     }));
     setMessage("");
   }

@@ -81,6 +81,20 @@ export function weightFromKg(weight, unit = "kg") {
   return unit === "lb" ? value * 2.20462 : value;
 }
 
+export function convertWeightValue(value, fromUnit, toUnit) {
+  if (value === "" || value === null || value === undefined) return "";
+  if (fromUnit === toUnit) return String(value);
+
+  const numericValue = Number(value);
+  if (!Number.isFinite(numericValue)) return String(value);
+
+  const converted = toUnit === "lb"
+    ? numericValue * 2.20462
+    : numericValue / 2.20462;
+  const decimalPlaces = toUnit === "kg" ? 2 : 1;
+  return String(Number(converted.toFixed(decimalPlaces)));
+}
+
 export function calculateDashboardStats(checkins) {
   const ascending = [...checkins]
     .sort((a, b) => a.date.localeCompare(b.date))
@@ -88,13 +102,18 @@ export function calculateDashboardStats(checkins) {
   const onTarget = checkins.filter(
     (checkin) => checkin.actualCalories <= checkin.targetCalories,
   ).length;
-  const streak = [...ascending].reverse().reduce(
-    (count, checkin, index) =>
-      index === count && checkin.actualCalories <= checkin.targetCalories
-        ? count + 1
-        : count,
-    0,
-  );
+  const descending = [...ascending].reverse();
+  let streak = 0;
+  for (let index = 0; index < descending.length; index += 1) {
+    const checkin = descending[index];
+    if (Number(checkin.actualCalories) > Number(checkin.targetCalories)) break;
+    if (index > 0) {
+      const newer = new Date(`${descending[index - 1].date}T00:00:00Z`);
+      const current = new Date(`${checkin.date}T00:00:00Z`);
+      if ((newer - current) / 86400000 !== 1) break;
+    }
+    streak += 1;
+  }
 
   return { ascending, onTarget, streak };
 }

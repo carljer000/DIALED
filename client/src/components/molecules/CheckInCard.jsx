@@ -1,9 +1,11 @@
 import Button from "../atoms/Button.jsx";
 import { longDate } from "../../utils/dates.js";
+import { weightFromKg } from "../../utils/checkins.js";
 
-export default function CheckInCard({ checkin, deleting, onDelete }) {
-  const hitCalories = checkin.actualCalories <= checkin.targetCalories;
-  const hitProtein = checkin.actualProtein >= checkin.targetProtein;
+export default function CheckInCard({ checkin, deleting, onDelete, weightUnit = "kg" }) {
+  const hitCalories = Number(checkin.actualCalories) <= Number(checkin.targetCalories);
+  const hitProtein = Number(checkin.actualProtein) >= Number(checkin.targetProtein);
+  const displayWeight = weightFromKg(checkin.weight, weightUnit);
   const result = hitCalories && hitProtein
     ? "Macros Hit"
     : hitCalories
@@ -29,7 +31,7 @@ export default function CheckInCard({ checkin, deleting, onDelete }) {
         </Button>
       </div>
       <div className="history-metrics">
-        <span>{checkin.weight || "—"}<small>kg</small></span>
+        <span>{displayWeight === null ? "—" : displayWeight.toFixed(1)}<small>{weightUnit}</small></span>
         <span>{checkin.actualCalories}<small>/{checkin.targetCalories} kcal</small></span>
         <span>{checkin.actualProtein}<small>/{checkin.targetProtein}g</small></span>
         <span>{checkin.steps.toLocaleString()}<small>steps</small></span>

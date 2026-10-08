@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useDialed } from "../../context/DialedContext.jsx";
 import {
   createEmptyCheckin,
+  convertWeightValue,
   serializeCheckin,
   toEditableCheckin,
 } from "../../utils/checkins.js";
@@ -30,12 +31,7 @@ export default function CheckInForm() {
     if (nextUnit === weightUnit) return;
     setForm((current) => ({
       ...current,
-      weight: current.weight
-        ? (nextUnit === "lb"
-            ? Number(current.weight) * 2.20462
-            : Number(current.weight) / 2.20462
-          ).toFixed(1)
-        : "",
+      weight: convertWeightValue(current.weight, weightUnit, nextUnit),
     }));
     setWeightUnit(nextUnit);
   }
@@ -83,7 +79,7 @@ export default function CheckInForm() {
       <div className="date-row">
         <label>
           Date
-          <input type="date" name="date" value={form.date} onChange={change} />
+          <input type="date" name="date" value={form.date} max={todayIso()} onChange={change} required />
         </label>
         <span className={selected ? "status-chip saved" : "status-chip"}>
           {selected ? "Editing logged day" : "New check-in"}

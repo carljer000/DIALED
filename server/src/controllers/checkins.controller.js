@@ -1,4 +1,5 @@
 import { pool } from "../config/database.js";
+import { isValidIsoDate, isValidUuid, validateCheckin } from "../validation/checkins.js";
 
 const SELECT_FIELDS = `
   id, date::text, weight, target_calories AS "targetCalories",
@@ -10,33 +11,6 @@ const SELECT_FIELDS = `
   reflection_prompt AS "reflectionPrompt", reflection_note AS "reflectionNote",
   created_at AS "createdAt", updated_at AS "updatedAt"`;
 
-const requiredNumbers = ["targetCalories", "actualCalories", "targetProtein", "actualProtein", "steps"];
-const motivations = new Set(["Low", "Neutral", "Dialed"]);
-const trainingStatuses = new Set(["Rest day", "Completed", "Missed"]);
-const challenges = new Set(["Hunger", "Low energy", "Social event", "Stress", "Time", "Injury", "Other"]);
-
-function validateCheckin(payload) {
-  const errors = [];
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(payload.date || "")) errors.push("A valid date is required.");
-  if (payload.weight !== null && payload.weight !== undefined && (!Number.isFinite(Number(payload.weight)) || Number(payload.weight) <= 0)) errors.push("Weight must be positive.");
-  for (const field of requiredNumbers) {
-    if (!Number.isInteger(Number(payload[field])) || Number(payload[field]) < 0) errors.push(`${field} must be a non-negative integer.`);
-  }
-  if (!motivations.has(payload.motivation)) errors.push("Motivation must be Low, Neutral, or Dialed.");
-  for (const field of ["energyLevel", "hungerLevel", "sleepQuality"]) {
-    const value = payload[field];
-    if (value !== null && value !== undefined && value !== "" && (!Number.isInteger(Number(value)) || Number(value) < 1 || Number(value) > 5)) {
-      errors.push(`${field} must be an integer from 1 to 5.`);
-    }
-  }
-  if (payload.trainingStatus && !trainingStatuses.has(payload.trainingStatus)) errors.push("Training status is invalid.");
-  if (payload.mainChallenge && !challenges.has(payload.mainChallenge)) errors.push("Main challenge is invalid.");
-  if (payload.dailyWin && typeof payload.dailyWin !== "string") errors.push("Daily win must be text.");
-  if (payload.reflectionPrompt && typeof payload.reflectionPrompt !== "string") errors.push("Reflection prompt must be text.");
-  if (payload.reflectionNote && typeof payload.reflectionNote !== "string") errors.push("Reflection note must be text.");
-  return errors;
-}
-
 export async function listCheckins(_request, response, next) {
   try {
     const { rows } = await pool.query(`SELECT ${SELECT_FIELDS} FROM checkins ORDER BY date DESC`);
@@ -45,6 +19,9 @@ export async function listCheckins(_request, response, next) {
 }
 
 export async function getCheckinByDate(request, response, next) {
+  if (!isValidIsoDate(request.params.date)) {
+    return response.status(400).json({ error: "Date must use a real YYYY-MM-DD calendar date." });
+  }
   try {
     const { rows } = await pool.query(`SELECT ${SELECT_FIELDS} FROM checkins WHERE date = $1`, [request.params.date]);
     if (!rows[0]) return response.status(404).json({ error: "No check-in found for that date." });
@@ -94,6 +71,9 @@ export async function upsertCheckin(request, response, next) {
 }
 
 export async function deleteCheckin(request, response, next) {
+  if (!isValidUuid(request.params.id)) {
+    return response.status(400).json({ error: "Check-in ID is invalid." });
+  }
   try {
     const { rowCount } = await pool.query("DELETE FROM checkins WHERE id = $1", [request.params.id]);
     if (!rowCount) return response.status(404).json({ error: "Check-in not found." });

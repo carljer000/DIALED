@@ -1,10 +1,10 @@
-import { shortDate } from "../../utils/dates.js";
+import { localIsoDate, shortDate } from "../../utils/dates.js";
 
 export default function ConsistencyHeatmap({ checkins }) {
   const cells = Array.from({ length: 21 }, (_, index) => {
     const date = new Date();
     date.setDate(date.getDate() - (20 - index));
-    const day = date.toISOString().slice(0, 10);
+    const day = localIsoDate(date);
     return { day, checkin: checkins.find((item) => item.date === day) };
   });
 

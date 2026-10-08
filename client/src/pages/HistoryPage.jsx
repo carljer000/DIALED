@@ -5,7 +5,7 @@ import HistoryList from "../components/organisms/HistoryList.jsx";
 import { useDialed } from "../context/DialedContext.jsx";
 
 export default function HistoryPage() {
-  const { checkins, loading, error, deleteCheckin } = useDialed();
+  const { checkins, loading, error, deleteCheckin, preferences } = useDialed();
 
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
@@ -130,7 +130,11 @@ export default function HistoryPage() {
           No check-ins match your filters.
         </StateMessage>
       ) : (
-        <HistoryList checkins={filteredCheckins} onDelete={deleteCheckin} />
+        <HistoryList
+          checkins={filteredCheckins}
+          onDelete={deleteCheckin}
+          weightUnit={preferences.weightUnit}
+        />
       )}
     </section>
   );
