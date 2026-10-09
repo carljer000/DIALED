@@ -1,7 +1,7 @@
 .settings-link, .back-link {
   align-items: center;
   border: 1px solid #34363b;
-  border-radius: 999px;
+  border-radius: 8px;
   color: #9ea5af;
   display: inline-flex;
   font-size: 0.78rem;
@@ -106,10 +106,46 @@
 
 .settings-save { justify-self: end; }
 
+.settings-account {
+  align-items: center;
+  border-top: 1px solid #2c2f34;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+  padding: 22px 0 4px;
+}
+
+.settings-account h2 {
+  font-size: 0.9rem;
+  margin: 0 0 5px;
+}
+
+.settings-account p {
+  color: #777f89;
+  font-family: var(--font-meta);
+  font-size: 0.66rem;
+  letter-spacing: 0.045em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.settings-sign-out {
+  flex: none;
+  min-width: 104px;
+}
+
 @media (max-width: 520px) {
   .settings-row { gap: 14px; }
   .settings-value input { width: 112px; }
   .settings-save { justify-self: stretch; width: 100%; }
+
+  .settings-account {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .settings-sign-out { width: 100%; }
 }
 
 @media (max-width: 380px) {

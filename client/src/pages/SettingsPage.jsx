@@ -4,11 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/atoms/Button.jsx";
 import StateMessage from "../components/atoms/StateMessage.jsx";
 import PageHeader from "../components/molecules/PageHeader.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 import { useDialed } from "../context/DialedContext.jsx";
 import { convertWeightValue } from "../utils/checkins.js";
 
 export default function SettingsPage() {
   const navigate = useNavigate();
+  const { authActionLoading, mode, signOut } = useAuth();
   const { preferences, savePreferences } = useDialed();
   const [form, setForm] = useState(preferences);
   const [message, setMessage] = useState("");
@@ -163,6 +165,23 @@ export default function SettingsPage() {
         </Button>
         {message && <StateMessage>{message}</StateMessage>}
       </form>
+
+      {mode === "owner" && (
+        <section className="settings-account" aria-labelledby="account-heading">
+          <div>
+            <h2 id="account-heading">Account</h2>
+            <p>End your private DIALED session on this device.</p>
+          </div>
+          <Button
+            className="secondary-button settings-sign-out"
+            type="button"
+            onClick={signOut}
+            loading={authActionLoading}
+          >
+            Sign out
+          </Button>
+        </section>
+      )}
     </section>
   );
 }

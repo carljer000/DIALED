@@ -109,6 +109,7 @@
 .secondary-button {
   background: transparent;
   border: 1px solid #555b64;
+  border-radius: 8px;
   color: var(--text-strong);
   font-weight: 700;
   min-height: 46px;

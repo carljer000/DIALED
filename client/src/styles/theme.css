@@ -103,7 +103,7 @@
   align-items: center;
   background: #0c0c0d;
   border: 1px solid #2f3339;
-  border-radius: 999px;
+  border-radius: 8px;
   display: flex;
   padding: 3px;
 }
