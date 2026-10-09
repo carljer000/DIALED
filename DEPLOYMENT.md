@@ -38,7 +38,7 @@ The API's `/api/health` endpoint stays public for health checks. `/api/auth/me` 
 
 ## 3. Find the owner UUID
 
-Temporarily deploy the client without `OWNER_USER_ID`, complete one GitHub sign-in, then find the account under **Supabase → Authentication → Users**. Copy its UUID—not the GitHub username—into the API project's `OWNER_USER_ID` variable and redeploy the API.
+Deploy the client and API with the required client variables first. Complete one GitHub sign-in, then find the account under **Supabase → Authentication → Users**. Copy its UUID—not the GitHub username—into the API project's `OWNER_USER_ID` variable and redeploy the API. Do not put `OWNER_USER_ID` in the client project; it belongs only in the API project.
 
 An alternative is to complete the first GitHub sign-in locally after adding the client variables, then copy the same UUID from Supabase.
 
