@@ -88,7 +88,7 @@
   letter-spacing: 0;
   background: transparent;
   border: 1px solid #34363b;
-  border-radius: 999px;
+  border-radius: 8px;
   color: #9ea5af;
   min-height: 42px;
   padding: 7px 10px;
@@ -100,7 +100,7 @@
 .compact-note input {
   background: #0c0c0d;
   border: 1px solid #30333a;
-  border-radius: 12px;
+  border-radius: 8px;
   color: white;
   font-weight: 400;
   min-height: 48px;
@@ -121,7 +121,7 @@
 
 .history-headspace strong, .history-headspace span {
   border: 1px solid #34363b;
-  border-radius: 999px;
+  border-radius: 8px;
   color: #9ea5af;
   font-size: 0.8rem;
   line-height: 1.3;

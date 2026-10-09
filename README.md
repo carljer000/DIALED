@@ -4,6 +4,8 @@
 
 Built with Codex AI assistance throughout planning, implementation, testing, and interface refinement. See [AI-USAGE.md](AI-USAGE.md) for the full disclosure.
 
+Deployment and owner-access setup are documented in [DEPLOYMENT.md](DEPLOYMENT.md).
+
 ## Overview
 
 DIALED is a daily cutting journal for lifters who want more structure and accountability while following a calorie deficit. It brings weight, calories, protein, steps, Headspace, and daily reflections into one check-in so users can see their consistency and progress over time.
@@ -119,6 +121,8 @@ On the **Today** screen, select a date and enter body weight, calorie target, ca
 Choose an overall Headspace status: **Low**, **Neutral**, or **Dialed**. The user can also optionally add energy, hunger/cravings, sleep quality, training status, the day's main challenge, a daily win, and a reflection based on a guided prompt.
 
 Select **Log check-in** to save the entry. Saving the same date updates the existing check-in instead of creating a duplicate.
+
+The production app has two access modes: GitHub-authenticated owner access for the real journal, and an isolated demo that stores invented sample data only in the visitor's browser.
 
 ### Personal settings
 

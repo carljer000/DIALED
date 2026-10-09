@@ -6,6 +6,30 @@
   width: 100%;
 }
 
+.demo-exit-footer {
+  border-top: 1px solid var(--line-color);
+  margin: 16px auto 0;
+  padding: 8px 20px 0;
+  text-align: right;
+  width: min(100%, 740px);
+}
+
+.demo-exit-footer button {
+  background: transparent;
+  border: 0;
+  color: var(--text-muted);
+  font-family: var(--font-meta);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  min-height: 44px;
+  padding: 8px 0 8px 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-transform: uppercase;
+}
+
+.demo-exit-footer button:hover { color: var(--accent-readable); }
+
 .page {
   box-sizing: border-box;
   min-width: 0;

@@ -9,7 +9,7 @@
 .stat-grid article {
   background: #050505;
   border: 1px solid #3c3c3c;
-  border-radius: 18px;
+  border-radius: 8px;
   color: white;
   min-width: 0;
   padding: 17px;
@@ -91,7 +91,7 @@
 
 .monthly-summary-metric {
   border: 1px solid #2c2f34;
-  border-radius: 4px;
+  border-radius: 8px;
   min-width: 0;
   padding: 13px 11px;
 }
@@ -170,7 +170,7 @@
   appearance: auto;
   background: #0c0c0d;
   border: 1px solid #34383f;
-  border-radius: 4px;
+  border-radius: 8px;
   color: #f4f4f4;
   color-scheme: dark;
   font-family: var(--font-meta);
@@ -193,7 +193,7 @@
 .history-filter-reset {
   background: transparent;
   border: 1px solid #34383f;
-  border-radius: 999px;
+  border-radius: 8px;
   color: var(--accent-ink);
   font-size: 0.75rem;
   font-weight: 600;
@@ -211,7 +211,7 @@
 .history-top time { display: block; font-size: 1rem; font-weight: 600; }
 
 .result-badge {
-  border-radius: 999px;
+  border-radius: 8px;
   display: inline-block;
   font-family: var(--font-meta);
   font-size: 0.67rem;
@@ -302,7 +302,7 @@
   margin-top: 24px;
 }
 
-.signal-grid article { border: 1px solid #2c2f34; border-radius: 4px; padding: 13px 11px; }
+.signal-grid article { border: 1px solid #2c2f34; border-radius: 8px; padding: 13px 11px; }
 .signal-grid span, .signal-grid small { color: #777f89; display: block; font-size: 0.65rem; }
 .signal-grid span { font-weight: 600; text-transform: uppercase; }
 .signal-grid small { font-family: var(--font-meta); text-transform: uppercase; }
@@ -332,7 +332,7 @@
 
 .pattern-summary strong {
   border: 1px solid var(--accent);
-  border-radius: 999px;
+  border-radius: 8px;
   color: var(--accent-ink);
   font-size: 0.72rem;
   padding: 6px 9px;
@@ -419,7 +419,7 @@
 
 .weekly-snapshot div {
   border: 1px solid #2c2f34;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 13px 10px;
 }
 

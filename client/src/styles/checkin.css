@@ -45,7 +45,7 @@
 
 .status-chip {
   border: 1px solid #34363b;
-  border-radius: 999px;
+  border-radius: 8px;
   color: #89909a;
   font-family: var(--font-meta);
   font-size: 0.7rem;
@@ -224,7 +224,7 @@
 .motivation button {
   background: transparent;
   border: 1px solid #34363b;
-  border-radius: 999px;
+  border-radius: 8px;
   color: #9ea5af;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   font-weight: 700;
@@ -252,7 +252,7 @@
 .note-label textarea {
   background: #0c0c0d;
   border: 1px solid #30333a;
-  border-radius: 12px;
+  border-radius: 8px;
   color: white;
   font-weight: 400;
   min-height: 94px;
@@ -291,6 +291,7 @@
   align-items: center;
   background: #b82030;
   border-color: #b82030;
+  border-radius: 8px;
   color: #000;
   display: flex;
   gap: 10px;

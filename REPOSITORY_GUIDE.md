@@ -6,6 +6,8 @@ This guide explains what each part of the repository does and how data moves thr
 
 ```text
 Browser
+  -> GitHub OAuth through Supabase Auth
+  -> owner token verification (real journal only)
   -> React page
   -> DialedContext
   -> checkinsApi
@@ -26,6 +28,8 @@ Browser
 9. Supabase stores the check-in. The saved result travels back through the API to React, and the context updates the screen without a reload.
 
 Settings do not go through the server. `DialedContext` stores preferences and the selected theme in browser `localStorage` under `dialed-preferences`.
+
+The public demo replaces the API adapter with `client/src/services/demoCheckins.js`. Demo check-ins and demo preferences use separate browser storage keys, so demo changes never reach Express or PostgreSQL.
 
 ## Screen flows
 
@@ -59,6 +63,7 @@ The date is unique, so saving an existing date updates that day's row rather tha
 | `client/src/pages/` | Route-level screens. |
 | `client/src/context/` | Shared check-ins, settings, loading, and error state. |
 | `client/src/services/` | Browser-to-API request code. |
+| `client/src/context/AuthContext.jsx` | GitHub session, owner verification, and demo-mode selection. |
 | `client/src/utils/` | Pure date, conversion, serialization, and summary functions. |
 | `client/src/styles/` | Base, layout, feature, responsive, and theme styles imported by `styles/index.css`. |
 | `client/test/` | Node tests for dates and check-in calculations. |
@@ -69,6 +74,7 @@ The date is unique, so saving an existing date updates that day's row rather tha
 | `server/src/controllers/` | Performs validation and database operations. |
 | `server/src/validation/` | Accepted values and request validation rules. |
 | `server/src/config/` | PostgreSQL pool configuration. |
+| `server/src/middleware/requireOwner.js` | Verifies the Supabase bearer token and immutable owner UUID before journal access. |
 | `server/certs/` | Certificate authority used to verify the Supabase PostgreSQL TLS connection. |
 | `server/seed.js` | Optional sample-data generator. |
 | `server/scripts/migrate-to-supabase.js` | Optional one-time copier for an older PostgreSQL database. |
@@ -77,6 +83,7 @@ The date is unique, so saving an existing date updates that day's row rather tha
 | `supabase/config.toml` | Local Supabase CLI configuration. |
 | `screenshots/` | Images displayed in the README. |
 | `AI-USAGE.md` | AI-assistance disclosure and supporting commit links. |
+| `DEPLOYMENT.md` | GitHub OAuth, Vercel projects, environment variables, and deployment checks. |
 | `REPORT.md` | Development journal/report retained as project documentation. |
 | `package.json` | Root commands for installing, running, building, seeding, and managing Supabase. |
 | `package-lock.json` | Reproducible root dependency versions; it should remain committed. |

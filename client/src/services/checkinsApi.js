@@ -1,15 +1,19 @@
 const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:3001/api";
 
-async function request(path, options = {}) {
+async function request(path, options = {}, accessToken = "") {
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), 15_000);
   let response;
 
   try {
     response = await fetch(`${baseUrl}${path}`, {
-      headers: { "Content-Type": "application/json" },
-      signal: controller.signal,
       ...options,
+      headers: {
+        "Content-Type": "application/json",
+        ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
+        ...options.headers,
+      },
+      signal: controller.signal,
     });
   } catch (error) {
     if (error.name === "AbortError") {
@@ -24,18 +28,21 @@ async function request(path, options = {}) {
 
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
-    throw new Error(data.error || "Unable to reach DIALED.");
+    const error = new Error(data.error || "Unable to reach DIALED.");
+    error.status = response.status;
+    throw error;
   }
 
   return data;
 }
 
 export const checkinsApi = {
-  list: () => request("/checkins"),
-  upsert: (checkin) =>
+  verifyOwner: (accessToken) => request("/auth/me", {}, accessToken),
+  list: (accessToken) => request("/checkins", {}, accessToken),
+  upsert: (checkin, accessToken) =>
     request("/checkins", {
       method: "POST",
       body: JSON.stringify(checkin),
-    }),
-  remove: (id) => request(`/checkins/${id}`, { method: "DELETE" }),
+    }, accessToken),
+  remove: (id, accessToken) => request(`/checkins/${id}`, { method: "DELETE" }, accessToken),
 };

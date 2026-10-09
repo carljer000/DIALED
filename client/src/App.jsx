@@ -5,6 +5,9 @@ import HistoryPage from "./pages/HistoryPage.jsx";
 import TodayPage from "./pages/TodayPage.jsx";
 import SettingsPage from "./pages/SettingsPage.jsx";
 import StateMessage from "./components/atoms/StateMessage.jsx";
+import AccessPage from "./components/organisms/AccessPage.jsx";
+import { useAuth } from "./context/AuthContext.jsx";
+import { DialedProvider } from "./context/DialedContext.jsx";
 
 const DashboardPage = lazy(() => import("./pages/DashboardPage.jsx"));
 
@@ -17,14 +20,21 @@ function LazyDashboard() {
 }
 
 export default function App() {
+  const { accessToken, loading, mode } = useAuth();
+
+  if (loading) return <AccessPage loading />;
+  if (!mode) return <AccessPage />;
+
   return (
-    <Routes>
-      <Route element={<AppLayout />}>
-        <Route path="/" element={<TodayPage />} />
-        <Route path="/dashboard" element={<LazyDashboard />} />
-        <Route path="/history" element={<HistoryPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-      </Route>
-    </Routes>
+    <DialedProvider key={mode} mode={mode} accessToken={accessToken}>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<TodayPage />} />
+          <Route path="/dashboard" element={<LazyDashboard />} />
+          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+        </Route>
+      </Routes>
+    </DialedProvider>
   );
 }
